@@ -6,14 +6,14 @@ import { RouterModule } from '@angular/router';
 
 
 // AngularFire
-// import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-// import { AngularFireDatabaseModule } from 'angularfire2/database';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 // Configuration
 import { AppRoutingModule } from './app-routing.module';
-// import { firebaseConfig } from '../environments/environment';
+import { firebaseConfig } from '../environments/firebase.config';
 import { AppComponent } from './app/app.component';
 
 
@@ -40,9 +40,9 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     BrowserAnimationsModule,
     // Firebase
-    // AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFireDatabaseModule,
-    // AngularFireAuthModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     // Routing
     AppRoutingModule,
   ],
