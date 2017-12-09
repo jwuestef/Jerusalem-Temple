@@ -1,0 +1,7 @@
+
+// Landing/splash image is full screen at top of page
+.splashImage {
+    width: 100%;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+}

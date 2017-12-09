@@ -2,7 +2,10 @@
 @import "./flatly.min.css";
 
 
-
+/* Sets page height, so footer is always at the bottom of the page or content. Subtract set height of footer, counting margins */
+#wrapper {
+  min-height: calc(100vh - 5rem);
+}
 
 
 

@@ -20,6 +20,7 @@ import { AppComponent } from './app/app.component';
 // Components
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 // Services
@@ -33,7 +34,8 @@ import { HeaderComponent } from './header/header.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     // Angular Modules
