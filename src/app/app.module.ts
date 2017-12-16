@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 // AngularFire
@@ -21,12 +22,14 @@ import { AppComponent } from './app/app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 // Services
 
 
 // 3rd Party Modules & Libraries
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 
@@ -35,18 +38,23 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdminComponent
   ],
   imports: [
     // Angular Modules
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     // Firebase
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     // Routing
     AppRoutingModule,
+    // Other
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

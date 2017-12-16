@@ -1,0 +1,65 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<!-- Login form -->
+<div class="container" *ngIf="showLoginForm" >
+
+
+  <div class="well well-lg">
+
+    <h2 style="text-align: center;">You must first log in!</h2>
+
+    <!-- Email field -->
+    <div class="input-group">
+      <label for="emailInput">Email:</label>
+      <input type="email" id="emailInput" class="form-control" placeholder="Username" aria-describedby="email login" placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="loginInfo.email" (keyup.enter)="loginUser()" autofocus>
+      <div *ngIf="emailFormControl.touched && emailFormControl.hasError('pattern')" class="loginError">
+        Please enter a valid email address
+      </div>
+      <div *ngIf="emailFormControl.touched && emailFormControl.hasError('required')" class="loginError">
+        Email is <strong>required</strong>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Password field -->
+    <div class="input-group">
+      <label for="passwordInput">Password:</label>
+      <input type="password" id="passwordInput" class="form-control" placeholder="Username" aria-describedby="email login" placeholder="Password" [formControl]="passwordFormControl" [(ngModel)]="loginInfo.password" (keyup.enter)="loginUser()">
+      <div *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')" class="loginError">
+        Password is <strong>required</strong>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Possible login errors -->
+    <div class="loginError">
+      <p *ngFor="let error of loginErrors">{{error}}</p>
+    </div>
+
+    <!-- Submit and Cancel buttons -->
+    <div>
+      <div fxFlex></div>
+      <button class="btn btn-primary btn-md" (click)="loginUser()" [disabled]="emailFormControl.hasError('pattern') || emailFormControl.hasError('required') || passwordFormControl.hasError('required')">Login</button>
+      <button class="btn btn-primary btn-md" (click)="resetLoginDialog()">Reset</button>
+    </div>
+
+  </div>
+
+</div>
+<!-- End of login form -->
+
+
+
+<!-- Admin-only content -->
+<div *ngIf="showPageContent">
+  <button class="btn btn-primary btn-md" (click)="logout()"><fa name="arrow-left"></fa>&nbsp;&nbsp;&nbsp;Logout</button>
+  
+</div>
