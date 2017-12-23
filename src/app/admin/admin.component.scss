@@ -1,4 +1,4 @@
-
+@import '../../styles/variables.scss';
 
 
 // Error in login popup on unsuccessful login
@@ -6,4 +6,47 @@
   color: red;
   font-weight: bold;
   text-align: center;
+}
+
+
+
+// Each header denoting a different portion of the page
+.pageSubCategory {
+  margin-left: 10vw;
+}
+
+
+
+// Each div the text editor is in
+.textUpdaterDiv {
+  margin: 2rem;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 5rem;
+}
+
+
+
+/* Used to tell admin successful text content update */
+.updated {
+  margin: 1rem;
+  margin-top: -1rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: 2px solid $darkBlue;
+  border-radius: 0.5rem;
+  background-color: $gold;
+  color: $darkBlue;
+}
+
+
+/* Admin view, each image upload form */
+.imageUploadingForm {
+  padding: 5rem;
+  padding-left: 5rem;
+  border: 4px solid gray;
+  margin: -2px;
+}
+.imageUploadingForm:first-of-type {
+  margin-left: 2px;
 }

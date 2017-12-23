@@ -23,12 +23,15 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
+import { TexteditorComponent } from './services/texteditor.component';
 
 
 // Services
+import { ContentService } from './services/content.service';
 
 
 // 3rd Party Modules & Libraries
+import * as $ from 'jquery';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
@@ -39,7 +42,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    AdminComponent
+    AdminComponent,
+    TexteditorComponent
   ],
   imports: [
     // Angular Modules
@@ -56,7 +60,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     // Other
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    ContentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

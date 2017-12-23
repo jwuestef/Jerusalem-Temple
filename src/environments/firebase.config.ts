@@ -3,6 +3,6 @@ export const firebaseConfig = {
   authDomain: "jerusalem-temple.firebaseapp.com",
   databaseURL: "https://jerusalem-temple.firebaseio.com",
   projectId: "jerusalem-temple",
-  storageBucket: "",
+  storageBucket: "jerusalem-temple.appspot.com",
   messagingSenderId: "716356656075"
 };

@@ -1,5 +1,6 @@
 // Import the custom theme from https://bootswatch.com/3/flatly/
 @import "./flatly.min.css";
+@import './variables.scss';
 
 
 /* Sets page height, so footer is always at the bottom of the page or content. Subtract set height of footer, counting margins */
@@ -9,4 +10,7 @@
 
 
 
-
+// All across the site, when you hover over a button, the text should turn teal (without this, it stays white)
+.btn-primary:hover {
+  color: $teal;
+}

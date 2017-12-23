@@ -4,4 +4,4 @@ interface NodeModule {
   id: string;
 }
 
-import * as $ from 'jquery';
+declare var tinymce: any;

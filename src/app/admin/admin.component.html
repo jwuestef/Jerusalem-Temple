@@ -12,7 +12,7 @@
 
   <div class="well well-lg">
 
-    <h2 style="text-align: center;">You must first log in!</h2>
+    <h3 style="text-align: center;">You must first log in!</h3>
 
     <!-- Email field -->
     <div class="input-group">
@@ -59,7 +59,196 @@
 
 
 <!-- Admin-only content -->
-<div *ngIf="showPageContent">
+<div *ngIf="showPageContent" class="container-fluid">
   <button class="btn btn-primary btn-md" (click)="logout()"><fa name="arrow-left"></fa>&nbsp;&nbsp;&nbsp;Logout</button>
+  <br>
+  <br>
+  <br>
+
+
+
+  <!-- Home page -->
+  <h1 style="margin-left: 5vw;">Home Page</h1>
+
+
+
+  <h3 class="pageSubCategory">Splash Background Image</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="homeBackgroundImageExisting">Existing Image:</label>
+    <img *ngIf="homeBackgroundImageSrc" id="homeBackgroundImageExisting" style="width: 100px; height: auto" [src]="homeBackgroundImageSrc" [alt]="homeBackgroundImageDescription">
+    <br>
+    <br>
+    <label for="homeBackgroundImageInput">Image to upload:<em style="color: red;">*required</em></label>
+    <input type="file" id="homeBackgroundImageInput" (change)="homeBackgroundImageDetection($event)">
+    <p><em>*For proper appearance, image should have a 9:16 aspect ratio.</em></p>
+    <br>
+    <label for="homeBackgroundImageDescription">Description of image:<em style="color: red;">*required</em></label>
+    <input type="text" id="homeBackgroundImageDescription" placeholder="description" [(ngModel)]="homeBackgroundImageDescription">
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="homeBackgroundImageUpload()">Upload this image</button>
+    <!-- Progress bar -->
+    <div *ngIf="homeBackgroundImageUploading">
+      <br>
+      <p>Progress: {{currentUpload?.progress}}% Complete</p>
+      <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+    </div>
+  </div>
+
+
+
+  <h3 class="pageSubCategory">Schedule</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'homeSchedule'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeSchedule()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeScheduleUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+
+
+  <h3 class="pageSubCategory">Address / Phone Number</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'homeAddress'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeAddress()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeAddressUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+
+  <h3 class="pageSubCategory">Mission Statement</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'homeMission'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeMission()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeMissionUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+
+  <h3 class="pageSubCategory">Image - Image slider</h3>
+  <!-- Image 1 and 2 update form -->
+  <div class="row">
+
+    <!-- Image1 upload -->
+    <div class="col-md-6 imageUploadingForm imageUploadingForm">
+      <label for="homeSliderImage1Existing">Existing Image:</label>
+      <img *ngIf="homeSliderImage1Src" id="homeSliderImage1Existing" style="width: 100px; height: auto" [src]="homeSliderImage1Src" [alt]="homeSliderImage1Description">
+      <br>
+      <br>
+      <label for="homeSliderImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
+      <input type="file" id="homeSliderImage1FileInput" (change)="homeSliderImage1Detection($event)">
+      <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+      <br>
+      <label for="homeSliderImage1Description">Description of image: <em style="color: red;">*required</em></label>
+      <input type="text" id="homeSliderImage1Description" placeholder="description" [(ngModel)]="homeSliderImage1Description">
+      <br>
+      <br>
+      <button class="btn btn-md btn-primary" (click)="homeSliderImage1Upload()">Upload this image</button>
+      <!-- Progress bar -->
+      <div *ngIf="homeSliderImage1Uploading">
+        <br>
+        <p>Progress: {{currentUpload?.progress}}% Complete</p>
+        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+      </div>
+    </div>
+
+    <!-- Image2 upload -->
+    <div class="col-md-6 imageUploadingForm imageUploadingForm">
+      <label for="homeSliderImage2Existing">Existing Image:</label>
+      <img *ngIf="homeSliderImage2Src" id="homeSliderImage2Existing" style="width: 100px; height: auto" [src]="homeSliderImage2Src" [alt]="homeSliderImage2Description">
+      <br>
+      <br>
+      <label for="homeSliderImage2FileInput">Image to upload: <em style="color: red;">*required</em></label>
+      <input type="file" id="homeSliderImage2FileInput" (change)="homeSliderImage2Detection($event)">
+      <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+      <br>
+      <label for="homeSliderImage2Description">Description of image: <em style="color: red;">*required</em></label>
+      <input type="text" id="homeSliderImage2Description" placeholder="description" [(ngModel)]="homeSliderImage2Description">
+      <br>
+      <br>
+      <button class="btn btn-md btn-primary" (click)="homeSliderImage2Upload()">Upload this image</button>
+      <!-- Progress bar -->
+      <div *ngIf="homeSliderImage2Uploading">
+        <br>
+        <p>Progress: {{currentUpload?.progress}}% Complete</p>
+        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+      </div>
+    </div>
+
+  </div>
+  <!-- End of row for updating images 1 and 2 -->
+
+
+
+  <h3 class="pageSubCategory">Text - Welcome</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'homeWelcome'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeWelcome()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeWelcomeUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+
+  <h3 class="pageSubCategory">Text - Our Beliefs</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'homeBeliefs'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeBeliefs()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeBeliefsUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+
+  <h3 class="pageSubCategory">Video URL</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="videoUrlInput">Video URL:</label>
+    <input type="text" id="videoUrlInput" placeholder="Video Url" style="width: 50vw;"[(ngModel)]="homeVideo" required>
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeVideo()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeVideoUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check-circle fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+  <h3 class="pageSubCategory">Destiny's Daycare - something here, image, description, etc...</h3>
+  <br>
+  <br>
+  <br>
+
+
+
+
+
+  
   
 </div>
