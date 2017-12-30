@@ -141,62 +141,147 @@
 
 
 
-  <h3 class="pageSubCategory">Image - Image slider</h3>
-  <!-- Image 1 and 2 update form -->
-  <div class="row">
+  <h3 class="pageSubCategory">Image slider</h3>
+  <div class="container">
 
-    <!-- Image1 upload -->
-    <div class="col-md-6 imageUploadingForm imageUploadingForm">
-      <label for="homeSliderImage1Existing">Existing Image:</label>
-      <img *ngIf="homeSliderImage1Src" id="homeSliderImage1Existing" style="width: 100px; height: auto" [src]="homeSliderImage1Src" [alt]="homeSliderImage1Description">
-      <br>
-      <br>
-      <label for="homeSliderImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
-      <input type="file" id="homeSliderImage1FileInput" (change)="homeSliderImage1Detection($event)">
-      <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
-      <br>
-      <label for="homeSliderImage1Description">Description of image: <em style="color: red;">*required</em></label>
-      <input type="text" id="homeSliderImage1Description" placeholder="description" [(ngModel)]="homeSliderImage1Description">
-      <br>
-      <br>
-      <button class="btn btn-md btn-primary" (click)="homeSliderImage1Upload()">Upload this image</button>
-      <!-- Progress bar -->
-      <div *ngIf="homeSliderImage1Uploading">
-        <br>
-        <p>Progress: {{currentUpload?.progress}}% Complete</p>
-        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-      </div>
-    </div>
+    <!-- Image 1 and 2 update form -->
+    <div class="row">
 
-    <!-- Image2 upload -->
-    <div class="col-md-6 imageUploadingForm imageUploadingForm">
-      <label for="homeSliderImage2Existing">Existing Image:</label>
-      <img *ngIf="homeSliderImage2Src" id="homeSliderImage2Existing" style="width: 100px; height: auto" [src]="homeSliderImage2Src" [alt]="homeSliderImage2Description">
-      <br>
-      <br>
-      <label for="homeSliderImage2FileInput">Image to upload: <em style="color: red;">*required</em></label>
-      <input type="file" id="homeSliderImage2FileInput" (change)="homeSliderImage2Detection($event)">
-      <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
-      <br>
-      <label for="homeSliderImage2Description">Description of image: <em style="color: red;">*required</em></label>
-      <input type="text" id="homeSliderImage2Description" placeholder="description" [(ngModel)]="homeSliderImage2Description">
-      <br>
-      <br>
-      <button class="btn btn-md btn-primary" (click)="homeSliderImage2Upload()">Upload this image</button>
-      <!-- Progress bar -->
-      <div *ngIf="homeSliderImage2Uploading">
+      <!-- Image1 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeSliderImage1Existing">Existing Image:</label>
+        <img *ngIf="homeSliderImage1Src" id="homeSliderImage1Existing" style="width: 100px; height: auto" [src]="homeSliderImage1Src" [alt]="homeSliderImage1Description">
         <br>
-        <p>Progress: {{currentUpload?.progress}}% Complete</p>
-        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        <br>
+        <label for="homeSliderImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeSliderImage1FileInput" (change)="homeSliderImage1Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="homeSliderImage1Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeSliderImage1Description" placeholder="description" [(ngModel)]="homeSliderImage1Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeSliderImage1Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeSliderImage1Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
       </div>
+
+      <!-- Image2 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeSliderImage2Existing">Existing Image:</label>
+        <img *ngIf="homeSliderImage2Src" id="homeSliderImage2Existing" style="width: 100px; height: auto" [src]="homeSliderImage2Src" [alt]="homeSliderImage2Description">
+        <br>
+        <br>
+        <label for="homeSliderImage2FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeSliderImage2FileInput" (change)="homeSliderImage2Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="homeSliderImage2Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeSliderImage2Description" placeholder="description" [(ngModel)]="homeSliderImage2Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeSliderImage2Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeSliderImage2Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
     </div>
+    <!-- End of row for updating images 1 and 2 -->
+
+    <!-- Image 3 and 4 update form -->
+    <div class="row">
+
+      <!-- Image3 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeSliderImage3Existing">Existing Image:</label>
+        <img *ngIf="homeSliderImage3Src" id="homeSliderImage3Existing" style="width: 100px; height: auto" [src]="homeSliderImage3Src" [alt]="homeSliderImage3Description">
+        <br>
+        <br>
+        <label for="homeSliderImage3FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeSliderImage3FileInput" (change)="homeSliderImage3Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="homeSliderImage3Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeSliderImage3Description" placeholder="description" [(ngModel)]="homeSliderImage3Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeSliderImage3Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeSliderImage3Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image4 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeSliderImage4Existing">Existing Image:</label>
+        <img *ngIf="homeSliderImage4Src" id="homeSliderImage4Existing" style="width: 100px; height: auto" [src]="homeSliderImage4Src" [alt]="homeSliderImage4Description">
+        <br>
+        <br>
+        <label for="homeSliderImage4FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeSliderImage4FileInput" (change)="homeSliderImage4Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="homeSliderImage4Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeSliderImage4Description" placeholder="description" [(ngModel)]="homeSliderImage4Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeSliderImage4Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeSliderImage4Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 3 and 4 -->
+
+    <!-- Image 5 and (null) update form -->
+    <div class="row">
+
+      <!-- Image5 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeSliderImage5Existing">Existing Image:</label>
+        <img *ngIf="homeSliderImage5Src" id="homeSliderImage5Existing" style="width: 100px; height: auto" [src]="homeSliderImage5Src" [alt]="homeSliderImage5Description">
+        <br>
+        <br>
+        <label for="homeSliderImage5FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeSliderImage5FileInput" (change)="homeSliderImage5Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="homeSliderImage5Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeSliderImage5Description" placeholder="description" [(ngModel)]="homeSliderImage5Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeSliderImage5Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeSliderImage5Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 5 and (null) -->
 
   </div>
-  <!-- End of row for updating images 1 and 2 -->
+  <!-- End of image slider -->
 
 
-
-  <h3 class="pageSubCategory">Text - Welcome</h3>
+  <h3 class="pageSubCategory">Welcome</h3>
   <div class="textUpdaterDiv">
     <texteditor [elementId]="'homeWelcome'"></texteditor>
     <br>
@@ -210,7 +295,7 @@
 
 
 
-  <h3 class="pageSubCategory">Text - Our Beliefs</h3>
+  <h3 class="pageSubCategory">Our Beliefs</h3>
   <div class="textUpdaterDiv">
     <texteditor [elementId]="'homeBeliefs'"></texteditor>
     <br>

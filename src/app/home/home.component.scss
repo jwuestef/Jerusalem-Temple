@@ -1,3 +1,6 @@
+@import '../../styles/variables.scss';
+
+
 
 // Spacing between sections
 section {
@@ -8,12 +11,93 @@ section {
 
 // Landing/splash image is full screen at top of page
 .splashImage {
-  width: 100%;
+  min-width: 99vw;
+  max-width: 99vw;
   height: 100vh;
   overflow: hidden;
 }
 
 
 
+/* Image slider */
+div#homeSlider {
+  overflow: hidden;
+  position: relative;
+  float: left;
+  padding: 0;
+  max-width: 75%;
+  height: auto;
+  margin: 0 auto;
+  margin-left: 12%;
+  background-color: rgba(189,189,189, 0.5);
+}
+div#homeSlider figure img {
+  width: 16.666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666%;
+  position: relative;
+  float: left;
+}
+div#homeSlider figure {
+  position: relative;
+  width: 600%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+}
+@keyframes slidy {
+  0%   { left: 0%; }
+  15%  { left: 0%; }
+
+  20%  { left: -100%; }
+  35%  { left: -100%; }
+
+  40%  { left: -200%; }
+  55%  { left: -200%; }
+
+  60%  { left: -300%; }
+  75%  { left: -300%; }
+
+  80%  { left: -400%; }
+  95%  { left: -400%; }
+
+  100% { left: -500%; }
+}
 
 
+
+// The panels in the About section
+.aboutPanel {
+  text-align: center;
+  cursor: pointer;
+  padding: 2.5vw;
+  border: 2px outset darkgray;
+  box-shadow: 2px 2px 5px #888888 outset;
+}
+.aboutPanel:hover {
+  border: 2px inset darkgray;
+  box-shadow: 2px 2px 5px #888888 inset;
+  background-color: rgb(210, 210, 210);
+  color: $teal;
+  text-decoration: underline;
+}
+
+
+// The images for the About section, labeling Calendar, Gallery, Meet The Pastor, and History
+.aboutPanel img {
+  width: 75%;
+  height: auto;
+  margin: auto auto;
+}
+
+
+@media only screen and (min-width : 768px) {
+  .is-table-row {
+      display: table;
+  }
+  .is-table-row [class*="col-"] {
+      float: none;
+      display: table-cell;
+      vertical-align: top;
+  }
+}

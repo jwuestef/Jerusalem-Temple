@@ -19,11 +19,12 @@ import { AppComponent } from './app/app.component';
 
 
 // Components
-import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AdminComponent } from './admin/admin.component';
 import { TexteditorComponent } from './services/texteditor.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 // Services
@@ -39,11 +40,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
     FooterComponent,
+    TexteditorComponent,
+    HomeComponent,
     AdminComponent,
-    TexteditorComponent
+    CalendarComponent
   ],
   imports: [
     // Angular Modules

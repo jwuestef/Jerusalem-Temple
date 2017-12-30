@@ -2,7 +2,7 @@
 <!-- Landing/splash section at top of page -->
 <section id="landingSection">
 
-  <img src="https://salemnet.vo.llnwd.net/media/cms/CW/faith/31620-church-hills.1200w.tn.jpg" alt="church placeholder" class="splashImage">
+  <img [src]="homeBackgroundImageSrc" alt="homeBackgroundImageDescription" class="splashImage">
 
 
 </section>
@@ -22,15 +22,21 @@
     <div class="row">
 
       <div class="col-md-4" style="background-color: lightblue;;">
-        <p>Schedule here</p>
+        <h2>Schedule</h2>
+        <div style="width: 50%; height: 1rem; background-color: #f39c12;"></div>
+        <p id="homeSchedule">Schedule here</p>
       </div>
 
       <div class="col-md-4" style="background-color: yellow;;">
-        <p>Address & phone here</p>
+        <h2>Address</h2>
+        <div style="width: 50%; height: 1rem; background-color: #f39c12;"></div>
+        <p id="homeAddress">Address & phone here</p>
       </div>
 
       <div class="col-md-4" style="background-color: lightgreen;">
-        <p>Mission statement here</p>
+        <h2>Mission</h2>
+        <div style="width: 50%; height: 1rem; background-color: #f39c12;"></div>
+        <p id="homeMission">Mission statement here</p>
       </div>
 
     </div>
@@ -73,16 +79,24 @@
 
         <!-- Image slider -->
         <div class="row" style="background-color: lightgreen;">
-          <p>Image slider here</p>
-          <!-- Pull image slider from Ganache -->
-          <!-- Pull image slider from Ganache -->
-          <!-- Pull image slider from Ganache -->
+          <div class="col-md-12" id="homeSlider">
+            <figure>
+              <img *ngIf="homeSliderImage1Src" [src]="homeSliderImage1Src" [alt]="homeSliderImage1Description">
+              <img *ngIf="homeSliderImage2Src" [src]="homeSliderImage2Src" [alt]="homeSliderImage2Description">
+              <img *ngIf="homeSliderImage3Src" [src]="homeSliderImage3Src" [alt]="homeSliderImage3Description">
+              <img *ngIf="homeSliderImage4Src" [src]="homeSliderImage4Src" [alt]="homeSliderImage4Description">
+              <img *ngIf="homeSliderImage5Src" [src]="homeSliderImage5Src" [alt]="homeSliderImage5Description">
+              <img *ngIf="homeSliderImage1Src" [src]="homeSliderImage1Src" [alt]="homeSliderImage1Description">
+            </figure>
+          </div>
         </div>
 
         <!-- 2 columns, welcome paragraph and an online giving link -->
         <div class="row">
           <div class="col-md-6" style="background-color: pink;">
-            <p>This is the welcome paragraph</p>
+            <h2>Welcome</h2>
+            <div style="width: 50%; height: 1rem; background-color: #f39c12;"></div>
+            <p id="homeWelcome">This is the welcome paragraph</p>
           </div>
           <div class="col-md-6" style="background-color: lightblue;">
             And this is the online giving link
@@ -118,11 +132,13 @@
       <div class="col-md-4 col-md-offset-2" style="background-color: pink;">
         <h2>Our Beliefs</h2>
         <div style="width: 50%; height: 1rem; background-color: #f39c12;"></div>
+        <p id="homeBeliefs"></p>
       </div>
 
 
       <div class="col-md-6" style="background-color: lightblue;">
         <p>video here</p>
+        <iframe *ngIf="homeVideo" [src]="homeVideo" width="420" height="315" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
       </div>
 
 
@@ -150,28 +166,33 @@
     </div>
 
     <!-- Calendar and Gallery row -->
-    <div class="row">
+    <div class="is-table-row">
 
-      <div class="col-md-6" style="background-color: yellow;">
-        <p>Link to Calendar here</p>
+      <div class="col-md-6 aboutPanel" routerLink="/calendar">
+        <h3>Calendar of Events</h3>
+        <img src="../../assets/calendar.png" alt="Events Calendar">
       </div>
 
-      <div class="col-md-6" style="background-color: lightblue;">
-        <p>Link to Gallery here</p>
+      <div class="col-md-6 aboutPanel">
+        <h3>Gallery</h3>
+        <br><br>
+        <img src="../../assets/gallery.png" alt="Gallery of images">
       </div>
 
     </div>
     <!-- End of Calendar and Gallery row -->
 
     <!-- Meet The Pastor and History row -->
-    <div class="row">
+    <div class="is-table-row">
         
-      <div class="col-md-6" style="background-color: lightgreen;">
-        <p>Link to Meet The Pastor here</p>
+      <div class="col-md-6 aboutPanel">
+        <h3>Meet The Pastor</h3>
       </div>
 
-      <div class="col-md-6" style="background-color: yellow;">
-        <p>Link to History here</p>
+      <div class="col-md-6 aboutPanel">
+        <h3>History</h3>
+        <br>
+        <img src="../../assets/history.jpg" alt="History">
       </div>
 
     </div>

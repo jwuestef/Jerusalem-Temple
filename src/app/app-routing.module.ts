@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
   },
   {
     path: '**',
