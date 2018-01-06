@@ -33,6 +33,10 @@ export class AdminComponent implements OnInit {
     Validators.required
   ]);
   loginErrors = [];
+  
+  currentUpload: Image;
+  
+
   // Home page
   // Text editors
   homeVideo = '';
@@ -43,7 +47,6 @@ export class AdminComponent implements OnInit {
   homeBeliefsUpdated = false;
   homeVideoUpdated = false;
   // Image uploading
-  currentUpload: Image;
   homeBackgroundImageSrc = '';
   homeBackgroundImageDescription = '';
   homeBackgroundImageSelectedFile: FileList;
@@ -75,6 +78,73 @@ export class AdminComponent implements OnInit {
   homeSliderImage5Uploading = false;
 
 
+  // Calendar page
+  // Text editors
+  calendarScheduleUpdated = false;
+  // Image uploading
+  calendarBackgroundImageSrc = '';
+  calendarBackgroundImageDescription = '';
+  calendarBackgroundImageSelectedFile: FileList;
+  calendarBackgroundImageUploading = false;
+  
+  calendarSliderImage1Src = '';
+  calendarSliderImage1Description = '';
+  calendarSliderImage1SelectedFile: FileList;
+  calendarSliderImage1Uploading = false;
+  
+  calendarSliderImage2Src = '';
+  calendarSliderImage2Description = '';
+  calendarSliderImage2SelectedFile: FileList;
+  calendarSliderImage2Uploading = false;
+  
+  calendarSliderImage3Src = '';
+  calendarSliderImage3Description = '';
+  calendarSliderImage3SelectedFile: FileList;
+  calendarSliderImage3Uploading = false;
+  
+  calendarSliderImage4Src = '';
+  calendarSliderImage4Description = '';
+  calendarSliderImage4SelectedFile: FileList;
+  calendarSliderImage4Uploading = false;
+  
+  calendarSliderImage5Src = '';
+  calendarSliderImage5Description = '';
+  calendarSliderImage5SelectedFile: FileList;
+  calendarSliderImage5Uploading = false;
+
+
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+
+
+  // Meet The Pastor page
+  pastorBiographyUpdated = false;
+  // Image uploading
+  pastorImageSrc = '';
+  pastorImageDescription = '';
+  pastorImageSelectedFile: FileList;
+  pastorImageUploading = false;
+
+
+  // Church History page
+  churchHistoryUpdated = false;
+  // Image uploading
+  historyImageSrc = '';
+  historyImageDescription = '';
+  historyImageSelectedFile: FileList;
+  historyImageUploading = false;
+
+
+  // Footer
+  footerMap = '';
+  footerScheduleUpdated = false;
+  footerAddressUpdated = false;
+  footerMapUpdated = false;
+
+
 
   constructor(private afAuth: AngularFireAuth, private afd: AngularFireDatabase, private router: Router, private contentService: ContentService) {
     // Ensure only admins can view this page
@@ -104,9 +174,9 @@ export class AdminComponent implements OnInit {
 
   // Pulls page content from Firebase and assigns it to variables
   getContent() {
+    // Home page
     this.contentService.getPageContent('homePage').then( pageContent => {
       pageContent = pageContent ? pageContent : {};
-      // Home page
       // Text editors
       pageContent.homeSchedule = pageContent.homeSchedule ? pageContent.homeSchedule : '';
       tinymce.get('homeSchedule').setContent(pageContent.homeSchedule);
@@ -157,11 +227,119 @@ export class AdminComponent implements OnInit {
       this.homeSliderImage5Src = pageContent.homeSliderImage5['url'];
       this.homeSliderImage5Description = pageContent.homeSliderImage5['description'];
     });
+
+
+    // Calendar page
+    this.contentService.getPageContent('calendarPage').then( pageContent => {
+      pageContent = pageContent ? pageContent : {};
+      // Text editors
+      pageContent.calendarSchedule = pageContent.calendarSchedule ? pageContent.calendarSchedule : '';
+      tinymce.get('calendarSchedule').setContent(pageContent.calendarSchedule);
+      // Images
+      // Calendar Background Image
+      pageContent.calendarBackgroundImage = pageContent.calendarBackgroundImage ? pageContent.calendarBackgroundImage : {};
+      pageContent.calendarBackgroundImage['url'] = pageContent.calendarBackgroundImage['url'] ? pageContent.calendarBackgroundImage['url'] : '';
+      pageContent.calendarBackgroundImage['description'] = pageContent.calendarBackgroundImage['description'] ? pageContent.calendarBackgroundImage['description'] : '';
+      this.calendarBackgroundImageSrc = pageContent.calendarBackgroundImage['url'];
+      this.calendarBackgroundImageDescription = pageContent.calendarBackgroundImage['description'];
+      // Calendar Slider 1
+      pageContent.calendarSliderImage1 = pageContent.calendarSliderImage1 ? pageContent.calendarSliderImage1 : {};
+      pageContent.calendarSliderImage1['url'] = pageContent.calendarSliderImage1['url'] ? pageContent.calendarSliderImage1['url'] : '';
+      pageContent.calendarSliderImage1['description'] = pageContent.calendarSliderImage1['description'] ? pageContent.calendarSliderImage1['description'] : '';
+      this.calendarSliderImage1Src = pageContent.calendarSliderImage1['url'];
+      this.calendarSliderImage1Description = pageContent.calendarSliderImage1['description'];
+      // Calendar Slider 2
+      pageContent.calendarSliderImage2 = pageContent.calendarSliderImage2 ? pageContent.calendarSliderImage2 : {};
+      pageContent.calendarSliderImage2['url'] = pageContent.calendarSliderImage2['url'] ? pageContent.calendarSliderImage2['url'] : '';
+      pageContent.calendarSliderImage2['description'] = pageContent.calendarSliderImage2['description'] ? pageContent.calendarSliderImage2['description'] : '';
+      this.calendarSliderImage2Src = pageContent.calendarSliderImage2['url'];
+      this.calendarSliderImage2Description = pageContent.calendarSliderImage2['description'];
+      // Calendar Slider 3
+      pageContent.calendarSliderImage3 = pageContent.calendarSliderImage3 ? pageContent.calendarSliderImage3 : {};
+      pageContent.calendarSliderImage3['url'] = pageContent.calendarSliderImage3['url'] ? pageContent.calendarSliderImage3['url'] : '';
+      pageContent.calendarSliderImage3['description'] = pageContent.calendarSliderImage3['description'] ? pageContent.calendarSliderImage3['description'] : '';
+      this.calendarSliderImage3Src = pageContent.calendarSliderImage3['url'];
+      this.calendarSliderImage3Description = pageContent.calendarSliderImage3['description'];
+      // Calendar Slider 4
+      pageContent.calendarSliderImage4 = pageContent.calendarSliderImage4 ? pageContent.calendarSliderImage4 : {};
+      pageContent.calendarSliderImage4['url'] = pageContent.calendarSliderImage4['url'] ? pageContent.calendarSliderImage4['url'] : '';
+      pageContent.calendarSliderImage4['description'] = pageContent.calendarSliderImage4['description'] ? pageContent.calendarSliderImage4['description'] : '';
+      this.calendarSliderImage4Src = pageContent.calendarSliderImage4['url'];
+      this.calendarSliderImage4Description = pageContent.calendarSliderImage4['description'];
+      // Calendar Slider 5
+      pageContent.calendarSliderImage5 = pageContent.calendarSliderImage5 ? pageContent.calendarSliderImage5 : {};
+      pageContent.calendarSliderImage5['url'] = pageContent.calendarSliderImage5['url'] ? pageContent.calendarSliderImage5['url'] : '';
+      pageContent.calendarSliderImage5['description'] = pageContent.calendarSliderImage5['description'] ? pageContent.calendarSliderImage5['description'] : '';
+      this.calendarSliderImage5Src = pageContent.calendarSliderImage5['url'];
+      this.calendarSliderImage5Description = pageContent.calendarSliderImage5['description'];
+    });
+
+    // Gallery page
+    this.contentService.getPageContent('galleryPage').then( pageContent => {
+      pageContent = pageContent ? pageContent : {};
+      // Gallery page
+      // Gallery page
+      // Gallery page
+      // Gallery page
+    });
+
+    // Meet The Pastor page
+    this.contentService.getPageContent('pastorPage').then( pageContent => {
+      pageContent = pageContent ? pageContent : {};
+      // Text editors
+      pageContent.pastorBiography = pageContent.pastorBiography ? pageContent.pastorBiography : '';
+      tinymce.get('pastorBiography').setContent(pageContent.pastorBiography);
+      // Images
+      // Pastor Image
+      pageContent.pastorImage = pageContent.pastorImage ? pageContent.pastorImage : {};
+      pageContent.pastorImage['url'] = pageContent.pastorImage['url'] ? pageContent.pastorImage['url'] : '';
+      pageContent.pastorImage['description'] = pageContent.pastorImage['description'] ? pageContent.pastorImage['description'] : '';
+      this.pastorImageSrc = pageContent.pastorImage['url'];
+      this.pastorImageDescription = pageContent.pastorImage['description'];
+    });
+
+    // Church History page
+    this.contentService.getPageContent('historyPage').then( pageContent => {
+      pageContent = pageContent ? pageContent : {};
+      // Text editors
+      pageContent.churchHistory = pageContent.churchHistory ? pageContent.churchHistory : '';
+      tinymce.get('churchHistory').setContent(pageContent.churchHistory);
+      // Images
+      // Historical Image
+      pageContent.historyImage = pageContent.historyImage ? pageContent.historyImage : {};
+      pageContent.historyImage['url'] = pageContent.historyImage['url'] ? pageContent.historyImage['url'] : '';
+      pageContent.historyImage['description'] = pageContent.historyImage['description'] ? pageContent.historyImage['description'] : '';
+      this.historyImageSrc = pageContent.historyImage['url'];
+      this.historyImageDescription = pageContent.historyImage['description'];
+    });
+
+    // Footer
+    this.contentService.getPageContent('footer').then( pageContent => {
+      pageContent = pageContent ? pageContent : {};
+      // Text editors
+      pageContent.footerSchedule = pageContent.footerSchedule ? pageContent.footerSchedule : '';
+      tinymce.get('footerSchedule').setContent(pageContent.footerSchedule);
+      pageContent.footerAddress = pageContent.footerAddress ? pageContent.footerAddress : '';
+      tinymce.get('footerAddress').setContent(pageContent.footerAddress);
+      this.footerMap = pageContent.footerMap ? pageContent.footerMap : '';
+    });
+    
   }
+  // End of getContent()
 
 
+
+
+
+  // ----------------------------
+  // ----------------------------
+  // ----- Save Text Editor -----
+  // ----------------------------
+  // ----------------------------
 
   // Saves the content of the editor, and then shows a success message
+
+  // Home page
   saveHomeSchedule() {
     this.homeScheduleUpdated = false;
     this.contentService.savePageContent('homePage', 'homeSchedule', tinymce.get('homeSchedule').getContent()).then( () => {
@@ -223,9 +401,91 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Calendar page
+  saveCalendarSchedule() {
+    this.calendarScheduleUpdated = false;
+    this.contentService.savePageContent('calendarPage', 'calendarSchedule', tinymce.get('calendarSchedule').getContent()).then( () => {
+      this.calendarScheduleUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.calendarScheduleUpdated = false;
+      }, 2000);
+    });
+  }
+
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+
+  // Meet The Pastor page
+  savePastorBiography() {
+    this.pastorBiographyUpdated = false;
+    this.contentService.savePageContent('pastorPage', 'pastorBiography', tinymce.get('pastorBiography').getContent()).then( () => {
+      this.pastorBiographyUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.pastorBiographyUpdated = false;
+      }, 2000);
+    });
+  }
+
+  // Church History page
+  saveChurchHistory() {
+    this.churchHistoryUpdated = false;
+    this.contentService.savePageContent('historyPage', 'churchHistory', tinymce.get('churchHistory').getContent()).then( () => {
+      this.churchHistoryUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.churchHistoryUpdated = false;
+      }, 2000);
+    });
+  }
+
+  // Footer
+  saveFooterSchedule() {
+    this.footerScheduleUpdated = false;
+    this.contentService.savePageContent('footer', 'footerSchedule', tinymce.get('footerSchedule').getContent()).then( () => {
+      this.footerScheduleUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.footerScheduleUpdated = false;
+      }, 2000);
+    });
+  }
+  saveFooterAddress() {
+    this.footerAddressUpdated = false;
+    this.contentService.savePageContent('footer', 'footerAddress', tinymce.get('footerAddress').getContent()).then( () => {
+      this.footerAddressUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.footerAddressUpdated = false;
+      }, 2000);
+    });
+  }
+  saveFooterMap() {
+    this.footerMapUpdated = false;
+    this.contentService.savePageContent('footer', 'footerMap', this.footerMap).then( () => {
+      this.footerMapUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.footerMapUpdated = false;
+      }, 2000);
+    });
+  }
 
 
-  // Image uploading
+
+
+
+  // ----------------------------
+  // ----------------------------
+  // ----- Image uploading ------
+  // ----------------------------
+  // ----------------------------
+
+  // Home page
   homeBackgroundImageDetection(event) {
     this.homeBackgroundImageSelectedFile = event.target.files;
   }
@@ -244,7 +504,6 @@ export class AdminComponent implements OnInit {
   homeSliderImage5Detection(event) {
     this.homeSliderImage5SelectedFile = event.target.files;
   }
-
   homeBackgroundImageUpload() {
     if (this.homeBackgroundImageDescription.trim() === '' || document.getElementById("homeBackgroundImageInput")['files'].length !== 1) {
       return;
@@ -390,7 +649,200 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Calendar page
+  calendarSliderImage1Detection(event) {
+    this.calendarSliderImage1SelectedFile = event.target.files;
+  }
+  calendarSliderImage2Detection(event) {
+    this.calendarSliderImage2SelectedFile = event.target.files;
+  }
+  calendarSliderImage3Detection(event) {
+    this.calendarSliderImage3SelectedFile = event.target.files;
+  }
+  calendarSliderImage4Detection(event) {
+    this.calendarSliderImage4SelectedFile = event.target.files;
+  }
+  calendarSliderImage5Detection(event) {
+    this.calendarSliderImage5SelectedFile = event.target.files;
+  }
+  calendarSliderImage1Upload() {
+    if (this.calendarSliderImage1Description.trim() === '' || document.getElementById("calendarSliderImage1FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.calendarSliderImage1Uploading = true;
+    this.calendarSliderImage2Uploading = false;
+    this.calendarSliderImage3Uploading = false;
+    this.calendarSliderImage4Uploading = false;
+    this.calendarSliderImage5Uploading = false;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.calendarSliderImage1SelectedFile.item(0));
+    this.currentUpload.description = this.calendarSliderImage1Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('calendarPage', 'calendarSliderImage1', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.calendarSliderImage1Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.calendarSliderImage1Uploading = false;
+      }, 2000);
+    });
+  }
+  calendarSliderImage2Upload() {
+    if (this.calendarSliderImage2Description.trim() === '' || document.getElementById("calendarSliderImage2FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.calendarSliderImage1Uploading = false;
+    this.calendarSliderImage2Uploading = true;
+    this.calendarSliderImage3Uploading = false;
+    this.calendarSliderImage4Uploading = false;
+    this.calendarSliderImage5Uploading = false;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.calendarSliderImage2SelectedFile.item(0));
+    this.currentUpload.description = this.calendarSliderImage2Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('calendarPage', 'calendarSliderImage2', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.calendarSliderImage2Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.calendarSliderImage2Uploading = false;
+      }, 2000);
+    });
+  }
+  calendarSliderImage3Upload() {
+    if (this.calendarSliderImage3Description.trim() === '' || document.getElementById("calendarSliderImage3FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.calendarSliderImage1Uploading = false;
+    this.calendarSliderImage2Uploading = false;
+    this.calendarSliderImage3Uploading = true;
+    this.calendarSliderImage4Uploading = false;
+    this.calendarSliderImage5Uploading = false;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.calendarSliderImage3SelectedFile.item(0));
+    this.currentUpload.description = this.calendarSliderImage3Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('calendarPage', 'calendarSliderImage3', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.calendarSliderImage3Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.calendarSliderImage3Uploading = false;
+      }, 2000);
+    });
+  }
+  calendarSliderImage4Upload() {
+    if (this.calendarSliderImage4Description.trim() === '' || document.getElementById("calendarSliderImage4FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.calendarSliderImage1Uploading = false;
+    this.calendarSliderImage2Uploading = false;
+    this.calendarSliderImage3Uploading = false;
+    this.calendarSliderImage4Uploading = true;
+    this.calendarSliderImage5Uploading = false;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.calendarSliderImage4SelectedFile.item(0));
+    this.currentUpload.description = this.calendarSliderImage4Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('calendarPage', 'calendarSliderImage4', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.calendarSliderImage4Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.calendarSliderImage4Uploading = false;
+      }, 2000);
+    });
+  }
+  calendarSliderImage5Upload() {
+    if (this.calendarSliderImage5Description.trim() === '' || document.getElementById("calendarSliderImage5FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.calendarSliderImage1Uploading = false;
+    this.calendarSliderImage2Uploading = false;
+    this.calendarSliderImage3Uploading = false;
+    this.calendarSliderImage4Uploading = false;
+    this.calendarSliderImage5Uploading = true;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.calendarSliderImage5SelectedFile.item(0));
+    this.currentUpload.description = this.calendarSliderImage5Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('calendarPage', 'calendarSliderImage5', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.calendarSliderImage5Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.calendarSliderImage5Uploading = false;
+      }, 2000);
+    });
+  }
 
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+
+  // Meet The Pastor page
+  pastorImageDetection(event) {
+    this.pastorImageSelectedFile = event.target.files;
+  }
+  pastorImageUpload() {
+    if (this.pastorImageDescription.trim() === '' || document.getElementById("pastorImageInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.pastorImageUploading = true;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.pastorImageSelectedFile.item(0));
+    this.currentUpload.description = this.pastorImageDescription.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('pastorPage', 'pastorImage', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.pastorImageSrc = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.pastorImageUploading = false;
+      }, 2000);
+    });
+  }
+
+  // Church History page
+  historyImageDetection(event) {
+    this.historyImageSelectedFile = event.target.files;
+  }
+  historyImageUpload() {
+    if (this.historyImageDescription.trim() === '' || document.getElementById("historyImageInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.historyImageUploading = true;
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.historyImageSelectedFile.item(0));
+    this.currentUpload.description = this.historyImageDescription.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('historyPage', 'historyImage', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.historyImageSrc = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.historyImageUploading = false;
+      }, 2000);
+    });
+  }
+  
+  
+  
+  
+  // ----------------------------
+  // ----------------------------
+  // ----- Authentication -------
+  // ----------------------------
+  // ----------------------------
 
   // Log the user in
   loginUser() {

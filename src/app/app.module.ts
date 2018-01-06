@@ -34,6 +34,7 @@ import { ContentService } from './services/content.service';
 // 3rd Party Modules & Libraries
 import * as $ from 'jquery';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ScrollToModule } from 'ng2-scroll-to';
 
 
 
@@ -60,7 +61,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     // Routing
     AppRoutingModule,
     // Other
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ScrollToModule.forRoot()
   ],
   providers: [
     ContentService

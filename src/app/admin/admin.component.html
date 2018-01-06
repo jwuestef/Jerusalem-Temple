@@ -1,8 +1,10 @@
+<br id="topOfPageAnchor">
 <br>
 <br>
 <br>
 <br>
-<br>
+
+
 
 
 
@@ -58,16 +60,53 @@
 
 
 
+
+
 <!-- Admin-only content -->
 <div *ngIf="showPageContent" class="container-fluid">
+
+  <!-- Footer at bottom of page for admin page navigation -->
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" scrollTo href="#topOfPageAnchor">Admin Navigation</a>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a scrollTo href="#homeSectionScrollAnchor">Home Page</a></li>
+          <li><a scrollTo href="#calendarSectionScrollAnchor">Calendar Page</a></li>
+          <li><a scrollTo href="#gallerySectionScrollAnchor">Gallery Page</a></li>
+          <li><a scrollTo href="#pastorSectionScrollAnchor">Meet The Pastor Page</a></li>
+          <li><a scrollTo href="#historySectionScrollAnchor">Church History Page</a></li>
+          <li><a scrollTo href="#footerSectionScrollAnchor">Footer</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- Logout button -->
   <button class="btn btn-primary btn-md" (click)="logout()"><fa name="arrow-left"></fa>&nbsp;&nbsp;&nbsp;Logout</button>
   <br>
   <br>
-  <br>
+
+
 
 
 
   <!-- Home page -->
+  <div id="homeSectionScrollAnchor" style="margin-bottom: 64px;"></div>
   <h1 style="margin-left: 5vw;">Home Page</h1>
 
 
@@ -334,6 +373,324 @@
 
 
 
+  <!-- Calendar page -->
+  <div id="calendarSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <h1 style="margin-left: 5vw;">Calendar Page</h1>
+
+
+
+  <h3 class="pageSubCategory">Calendar</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'calendarSchedule'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveCalendarSchedule()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="calendarScheduleUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
+
+  <h3 class="pageSubCategory">Image slider</h3>
+  <div class="container">
+
+    <!-- Image 1 and 2 update form -->
+    <div class="row">
+
+      <!-- Image1 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="calendarSliderImage1Existing">Existing Image:</label>
+        <img *ngIf="calendarSliderImage1Src" id="calendarSliderImage1Existing" style="width: 100px; height: auto" [src]="calendarSliderImage1Src" [alt]="calendarSliderImage1Description">
+        <br>
+        <br>
+        <label for="calendarSliderImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="calendarSliderImage1FileInput" (change)="calendarSliderImage1Detection($event)">
+        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <br>
+        <label for="calendarSliderImage1Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="calendarSliderImage1Description" placeholder="description" [(ngModel)]="calendarSliderImage1Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="calendarSliderImage1Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="calendarSliderImage1Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image2 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="calendarSliderImage2Existing">Existing Image:</label>
+        <img *ngIf="calendarSliderImage2Src" id="calendarSliderImage2Existing" style="width: 100px; height: auto" [src]="calendarSliderImage2Src" [alt]="calendarSliderImage2Description">
+        <br>
+        <br>
+        <label for="calendarSliderImage2FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="calendarSliderImage2FileInput" (change)="calendarSliderImage2Detection($event)">
+        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <br>
+        <label for="calendarSliderImage2Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="calendarSliderImage2Description" placeholder="description" [(ngModel)]="calendarSliderImage2Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="calendarSliderImage2Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="calendarSliderImage2Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 1 and 2 -->
+
+    <!-- Image 3 and 4 update form -->
+    <div class="row">
+
+      <!-- Image3 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="calendarSliderImage3Existing">Existing Image:</label>
+        <img *ngIf="calendarSliderImage3Src" id="calendarSliderImage3Existing" style="width: 100px; height: auto" [src]="calendarSliderImage3Src" [alt]="calendarSliderImage3Description">
+        <br>
+        <br>
+        <label for="calendarSliderImage3FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="calendarSliderImage3FileInput" (change)="calendarSliderImage3Detection($event)">
+        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <br>
+        <label for="calendarSliderImage3Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="calendarSliderImage3Description" placeholder="description" [(ngModel)]="calendarSliderImage3Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="calendarSliderImage3Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="calendarSliderImage3Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image4 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="calendarSliderImage4Existing">Existing Image:</label>
+        <img *ngIf="calendarSliderImage4Src" id="calendarSliderImage4Existing" style="width: 100px; height: auto" [src]="calendarSliderImage4Src" [alt]="calendarSliderImage4Description">
+        <br>
+        <br>
+        <label for="calendarSliderImage4FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="calendarSliderImage4FileInput" (change)="calendarSliderImage4Detection($event)">
+        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <br>
+        <label for="calendarSliderImage4Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="calendarSliderImage4Description" placeholder="description" [(ngModel)]="calendarSliderImage4Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="calendarSliderImage4Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="calendarSliderImage4Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 3 and 4 -->
+
+    <!-- Image 5 and (null) update form -->
+    <div class="row">
+
+      <!-- Image5 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="calendarSliderImage5Existing">Existing Image:</label>
+        <img *ngIf="calendarSliderImage5Src" id="calendarSliderImage5Existing" style="width: 100px; height: auto" [src]="calendarSliderImage5Src" [alt]="calendarSliderImage5Description">
+        <br>
+        <br>
+        <label for="calendarSliderImage5FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="calendarSliderImage5FileInput" (change)="calendarSliderImage5Detection($event)">
+        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <br>
+        <label for="calendarSliderImage5Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="calendarSliderImage5Description" placeholder="description" [(ngModel)]="calendarSliderImage5Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="calendarSliderImage5Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="calendarSliderImage5Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 5 and (null) -->
+
+  </div>
+  <!-- End of image slider -->
+
+
+
+
+
+  <!-- Gallery page -->
+  <div id="gallerySectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+  
+  
+  
+  
+  
+  <!-- Pastor page -->
+  <div id="pastorSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <h1 style="margin-left: 5vw;">Meet The Pastor Page</h1>
+
+  <!-- Biography -->
+  <h3 class="pageSubCategory">Biography</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'pastorBiography'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="savePastorBiography()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="pastorBiographyUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+  <h3 class="pageSubCategory">Pastor Photo</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="pastorImageExisting">Existing Photo:</label>
+    <img *ngIf="pastorImageSrc" id="pastorImageExisting" style="width: 100px; height: auto" [src]="pastorImageSrc" [alt]="pastorImageDescription">
+    <br>
+    <br>
+    <label for="pastorImageInput">Photo to upload:<em style="color: red;">*required</em></label>
+    <input type="file" id="pastorImageInput" (change)="pastorImageDetection($event)">
+    <p><em>*For proper appearance, photo should have a 1:1 aspect ratio.</em></p>
+    <br>
+    <label for="pastorImageDescription">Description of photo:<em style="color: red;">*required</em></label>
+    <input type="text" id="pastorImageDescription" placeholder="description" [(ngModel)]="pastorImageDescription">
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="pastorImageUpload()">Upload this photo</button>
+    <!-- Progress bar -->
+    <div *ngIf="pastorImageUploading">
+      <br>
+      <p>Progress: {{currentUpload?.progress}}% Complete</p>
+      <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  <!-- Church History page -->
+  <div id="historySectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <h1 style="margin-left: 5vw;">Church History Page</h1>
+
+  <!-- Church History paragraph -->
+  <h3 class="pageSubCategory">Church History</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'churchHistory'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveChurchHistory()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="churchHistoryUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+  <h3 class="pageSubCategory">Historical Photo</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="historyImageExisting">Existing Photo:</label>
+    <img *ngIf="historyImageSrc" id="historyImageExisting" style="width: 100px; height: auto" [src]="historyImageSrc" [alt]="historyImageDescription">
+    <br>
+    <br>
+    <label for="historyImageInput">Photo to upload:<em style="color: red;">*required</em></label>
+    <input type="file" id="historyImageInput" (change)="historyImageDetection($event)">
+    <p><em>*For proper appearance, photo should have a 1:1 aspect ratio.</em></p>
+    <br>
+    <label for="historyImageDescription">Description of photo:<em style="color: red;">*required</em></label>
+    <input type="text" id="historyImageDescription" placeholder="description" [(ngModel)]="historyImageDescription">
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="historyImageUpload()">Upload this photo</button>
+    <!-- Progress bar -->
+    <div *ngIf="historyImageUploading">
+      <br>
+      <p>Progress: {{currentUpload?.progress}}% Complete</p>
+      <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Footer page -->
+  <div id="footerSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <h1 style="margin-left: 5vw;">Footer</h1>
+
+  <!-- Schedule -->
+  <h3 class="pageSubCategory">Schedule</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'footerSchedule'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveFooterSchedule()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="footerScheduleUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+  <!-- Address -->
+  <h3 class="pageSubCategory">Address</h3>
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'footerAddress'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveFooterAddress()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="footerAddressUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+  <!-- Map -->
+  <h3 class="pageSubCategory">Map URL</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="mapUrlInput">Map URL:</label>
+    <input type="text" id="mapUrlInput" placeholder="Map Url" style="width: 50vw;"[(ngModel)]="footerMap" required>
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveFooterMap()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="footerMapUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check-circle fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
+
   
   
 </div>
+<!-- End of admin-only content -->
