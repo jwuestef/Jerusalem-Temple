@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { ContentService } from '../services/content.service';
 
 
@@ -10,6 +11,8 @@ import { ContentService } from '../services/content.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[];
   calendarSliderImage1Src = '';
   calendarSliderImage1Description = '';
   calendarSliderImage2Src = '';
@@ -28,6 +31,53 @@ export class CalendarComponent implements OnInit {
 
 
   ngOnInit() {
+    // Configure image gallery options
+    this.galleryOptions = [
+      {
+          width: '600px',
+          height: '400px',
+          thumbnailsColumns: 4,
+          imageAnimation: NgxGalleryAnimation.Slide,
+          imageAutoPlay: true,
+          imageAutoPlayInterval: 5000,
+          imageAutoPlayPauseOnHover: true,
+          imageSwipe: true,
+          imageInfinityMove : true,
+          thumbnails: false,
+          previewSwipe: true,
+          previewAutoPlay: true,
+          previewAutoPlayPauseOnHover: true,
+          previewCloseOnClick: true,
+          previewCloseOnEsc: true,
+          previewFullscreen: true,
+          previewZoom: true,
+          previewKeyboardNavigation: true,
+          previewInfinityMove: true
+      },
+      // max-width 800
+      {
+          breakpoint: 800,
+          width: '100%',
+          height: '600px',
+          thumbnailsColumns: 3,
+          imagePercent: 80,
+          thumbnailsPercent: 20,
+          thumbnailsMargin: 20,
+          thumbnailMargin: 20
+      },
+      // max-width 400
+      {
+          breakpoint: 400,
+          preview: false
+      }
+    ];
+    this.galleryImages = [
+      {
+          small: 'assets/whiteBackgroundFiller.png',
+          medium: 'assets/whiteBackgroundFiller.png',
+          big: 'assets/whiteBackgroundFiller.png',
+      }
+    ];
     // Pull updated content from Firebase
     this.getContent();
   }
@@ -72,6 +122,39 @@ export class CalendarComponent implements OnInit {
       pageContent.calendarSliderImage5['description'] = pageContent.calendarSliderImage5['description'] ? pageContent.calendarSliderImage5['description'] : '';
       this.calendarSliderImage5Src = pageContent.calendarSliderImage5['url'];
       this.calendarSliderImage5Description = pageContent.calendarSliderImage5['description'];
+
+      // Reset the gallery images
+      let newImages = this.galleryImages.slice(0, this.galleryImages.length);
+      newImages = [
+        {
+          'small': this.calendarSliderImage1Src,
+          'medium': this.calendarSliderImage1Src,
+          'big': this.calendarSliderImage1Src
+        },
+        {
+          'small': this.calendarSliderImage2Src,
+          'medium': this.calendarSliderImage2Src,
+          'big': this.calendarSliderImage2Src
+        },
+        {
+          'small': this.calendarSliderImage3Src,
+          'medium': this.calendarSliderImage3Src,
+          'big': this.calendarSliderImage3Src
+
+        },
+        {
+          'small': this.calendarSliderImage4Src,
+          'medium': this.calendarSliderImage4Src,
+          'big': this.calendarSliderImage4Src
+
+        },
+        {
+          'small': this.calendarSliderImage5Src,
+          'medium': this.calendarSliderImage5Src,
+          'big': this.calendarSliderImage5Src
+        }
+      ];
+      this.galleryImages = newImages;
     });
   }
 

@@ -29,12 +29,14 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 // Services
 import { ContentService } from './services/content.service';
+import { ScrollingService } from './services/scrolling.service';
 
 
 // 3rd Party Modules & Libraries
 import * as $ from 'jquery';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { ScrollToModule } from 'ng2-scroll-to';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 
 
@@ -62,10 +64,12 @@ import { ScrollToModule } from 'ng2-scroll-to';
     AppRoutingModule,
     // Other
     AngularFontAwesomeModule,
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [
-    ContentService
+    ContentService,
+    ScrollingService
   ],
   bootstrap: [AppComponent]
 })

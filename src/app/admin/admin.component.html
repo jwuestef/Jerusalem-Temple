@@ -76,17 +76,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" scrollTo href="#topOfPageAnchor">Admin Navigation</a>
+        <a class="navbar-brand" [ngx-scroll-to]="'#topOfPageAnchor'">Admin Navigation</a>
       </div>
       
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a scrollTo href="#homeSectionScrollAnchor">Home Page</a></li>
-          <li><a scrollTo href="#calendarSectionScrollAnchor">Calendar Page</a></li>
-          <li><a scrollTo href="#gallerySectionScrollAnchor">Gallery Page</a></li>
-          <li><a scrollTo href="#pastorSectionScrollAnchor">Meet The Pastor Page</a></li>
-          <li><a scrollTo href="#historySectionScrollAnchor">Church History Page</a></li>
-          <li><a scrollTo href="#footerSectionScrollAnchor">Footer</a></li>
+          <li><a [ngx-scroll-to]="'#homeSectionScrollAnchor'">Home Page</a></li>
+          <li><a [ngx-scroll-to]="'#calendarSectionScrollAnchor'">Calendar Page</a></li>
+          <li><a [ngx-scroll-to]="'#gallerySectionScrollAnchor'">Gallery Page</a></li>
+          <li><a [ngx-scroll-to]="'#pastorSectionScrollAnchor'">Meet The Pastor Page</a></li>
+          <li><a [ngx-scroll-to]="'#historySectionScrollAnchor'">Church History Page</a></li>
+          <li><a [ngx-scroll-to]="'#footerSectionScrollAnchor'">Footer</a></li>
         </ul>
       </div>
     </div>
@@ -106,7 +106,8 @@
 
 
   <!-- Home page -->
-  <div id="homeSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <div id="homeSectionScrollAnchor"></div>
+  <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Home Page</h1>
 
 
@@ -374,7 +375,8 @@
 
 
   <!-- Calendar page -->
-  <div id="calendarSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <div id="calendarSectionScrollAnchor"></div>
+  <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Calendar Page</h1>
 
 
@@ -537,7 +539,8 @@
 
 
   <!-- Gallery page -->
-  <div id="gallerySectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <div id="gallerySectionScrollAnchor"></div>
+  <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Gallery Page</h1>
   <h1 style="margin-left: 5vw;">Gallery Page</h1>
   <h1 style="margin-left: 5vw;">Gallery Page</h1>
@@ -554,7 +557,8 @@
   
   
   <!-- Pastor page -->
-  <div id="pastorSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <div id="pastorSectionScrollAnchor"></div>
+  <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Meet The Pastor Page</h1>
 
   <!-- Biography -->
@@ -599,7 +603,8 @@
   
   
   <!-- Church History page -->
-  <div id="historySectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <div id="historySectionScrollAnchor"></div>
+  <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Church History Page</h1>
 
   <!-- Church History paragraph -->
@@ -644,7 +649,8 @@
 
 
   <!-- Footer page -->
-  <div id="footerSectionScrollAnchor" style="margin-bottom: 64px;"></div>
+  <div id="footerSectionScrollAnchor"></div>
+  <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Footer</h1>
 
   <!-- Schedule -->

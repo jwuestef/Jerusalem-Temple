@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { ContentService } from '../services/content.service';
 import { Image } from '../services/image.model';
+import { ScrollingService } from '../services/scrolling.service';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -82,11 +83,6 @@ export class AdminComponent implements OnInit {
   // Text editors
   calendarScheduleUpdated = false;
   // Image uploading
-  calendarBackgroundImageSrc = '';
-  calendarBackgroundImageDescription = '';
-  calendarBackgroundImageSelectedFile: FileList;
-  calendarBackgroundImageUploading = false;
-  
   calendarSliderImage1Src = '';
   calendarSliderImage1Description = '';
   calendarSliderImage1SelectedFile: FileList;
@@ -114,13 +110,62 @@ export class AdminComponent implements OnInit {
 
 
   // Gallery page
-  // Gallery page
-  // Gallery page
-  // Gallery page
-  // Gallery page
+  // Text editors
+    // None
+  // Image uploading
+  gallerySliderImage1Src = '';
+  gallerySliderImage1Description = '';
+  gallerySliderImage1SelectedFile: FileList;
+  gallerySliderImage1Uploading = false;
+  
+  gallerySliderImage2Src = '';
+  gallerySliderImage2Description = '';
+  gallerySliderImage2SelectedFile: FileList;
+  gallerySliderImage2Uploading = false;
+  
+  gallerySliderImage3Src = '';
+  gallerySliderImage3Description = '';
+  gallerySliderImage3SelectedFile: FileList;
+  gallerySliderImage3Uploading = false;
+  
+  gallerySliderImage4Src = '';
+  gallerySliderImage4Description = '';
+  gallerySliderImage4SelectedFile: FileList;
+  gallerySliderImage4Uploading = false;
+  
+  gallerySliderImage5Src = '';
+  gallerySliderImage5Description = '';
+  gallerySliderImage5SelectedFile: FileList;
+  gallerySliderImage5Uploading = false;
+
+  gallerySliderImage6Src = '';
+  gallerySliderImage6Description = '';
+  gallerySliderImage6SelectedFile: FileList;
+  gallerySliderImage6Uploading = false;
+  
+  gallerySliderImage7Src = '';
+  gallerySliderImage7Description = '';
+  gallerySliderImage7SelectedFile: FileList;
+  gallerySliderImage7Uploading = false;
+  
+  gallerySliderImage8Src = '';
+  gallerySliderImage8Description = '';
+  gallerySliderImage8SelectedFile: FileList;
+  gallerySliderImage8Uploading = false;
+  
+  gallerySliderImage9Src = '';
+  gallerySliderImage9Description = '';
+  gallerySliderImage9SelectedFile: FileList;
+  gallerySliderImage9Uploading = false;
+  
+  gallerySliderImage10Src = '';
+  gallerySliderImage10Description = '';
+  gallerySliderImage10SelectedFile: FileList;
+  gallerySliderImage10Uploading = false;
 
 
   // Meet The Pastor page
+  // Text editors
   pastorBiographyUpdated = false;
   // Image uploading
   pastorImageSrc = '';
@@ -130,6 +175,7 @@ export class AdminComponent implements OnInit {
 
 
   // Church History page
+  // Text editors
   churchHistoryUpdated = false;
   // Image uploading
   historyImageSrc = '';
@@ -139,14 +185,23 @@ export class AdminComponent implements OnInit {
 
 
   // Footer
+  // Text editors
   footerMap = '';
   footerScheduleUpdated = false;
   footerAddressUpdated = false;
   footerMapUpdated = false;
+  // Image uploading
+    // None
 
 
 
-  constructor(private afAuth: AngularFireAuth, private afd: AngularFireDatabase, private router: Router, private contentService: ContentService) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afd: AngularFireDatabase,
+    private router: Router,
+    private contentService: ContentService,
+    public scrollingService: ScrollingService
+  ) {
     // Ensure only admins can view this page
     // When we get the answer regarding authentication, the AuthState will change... it goes from NotAuthed -> NotAuthed or NotAuthed -> YesAuthed
     this.afAuth.auth.onAuthStateChanged(user => {
@@ -236,12 +291,6 @@ export class AdminComponent implements OnInit {
       pageContent.calendarSchedule = pageContent.calendarSchedule ? pageContent.calendarSchedule : '';
       tinymce.get('calendarSchedule').setContent(pageContent.calendarSchedule);
       // Images
-      // Calendar Background Image
-      pageContent.calendarBackgroundImage = pageContent.calendarBackgroundImage ? pageContent.calendarBackgroundImage : {};
-      pageContent.calendarBackgroundImage['url'] = pageContent.calendarBackgroundImage['url'] ? pageContent.calendarBackgroundImage['url'] : '';
-      pageContent.calendarBackgroundImage['description'] = pageContent.calendarBackgroundImage['description'] ? pageContent.calendarBackgroundImage['description'] : '';
-      this.calendarBackgroundImageSrc = pageContent.calendarBackgroundImage['url'];
-      this.calendarBackgroundImageDescription = pageContent.calendarBackgroundImage['description'];
       // Calendar Slider 1
       pageContent.calendarSliderImage1 = pageContent.calendarSliderImage1 ? pageContent.calendarSliderImage1 : {};
       pageContent.calendarSliderImage1['url'] = pageContent.calendarSliderImage1['url'] ? pageContent.calendarSliderImage1['url'] : '';
@@ -277,10 +326,69 @@ export class AdminComponent implements OnInit {
     // Gallery page
     this.contentService.getPageContent('galleryPage').then( pageContent => {
       pageContent = pageContent ? pageContent : {};
-      // Gallery page
-      // Gallery page
-      // Gallery page
-      // Gallery page
+      // Text editors
+        // None
+      // Images
+      // Gallery Slider 1
+      pageContent.gallerySliderImage1 = pageContent.gallerySliderImage1 ? pageContent.gallerySliderImage1 : {};
+      pageContent.gallerySliderImage1['url'] = pageContent.gallerySliderImage1['url'] ? pageContent.gallerySliderImage1['url'] : '';
+      pageContent.gallerySliderImage1['description'] = pageContent.gallerySliderImage1['description'] ? pageContent.gallerySliderImage1['description'] : '';
+      this.gallerySliderImage1Src = pageContent.gallerySliderImage1['url'];
+      this.gallerySliderImage1Description = pageContent.gallerySliderImage1['description'];
+      // Gallery Slider 2
+      pageContent.gallerySliderImage2 = pageContent.gallerySliderImage2 ? pageContent.gallerySliderImage2 : {};
+      pageContent.gallerySliderImage2['url'] = pageContent.gallerySliderImage2['url'] ? pageContent.gallerySliderImage2['url'] : '';
+      pageContent.gallerySliderImage2['description'] = pageContent.gallerySliderImage2['description'] ? pageContent.gallerySliderImage2['description'] : '';
+      this.gallerySliderImage2Src = pageContent.gallerySliderImage2['url'];
+      this.gallerySliderImage2Description = pageContent.gallerySliderImage2['description'];
+      // Gallery Slider 3
+      pageContent.gallerySliderImage3 = pageContent.gallerySliderImage3 ? pageContent.gallerySliderImage3 : {};
+      pageContent.gallerySliderImage3['url'] = pageContent.gallerySliderImage3['url'] ? pageContent.gallerySliderImage3['url'] : '';
+      pageContent.gallerySliderImage3['description'] = pageContent.gallerySliderImage3['description'] ? pageContent.gallerySliderImage3['description'] : '';
+      this.gallerySliderImage3Src = pageContent.gallerySliderImage3['url'];
+      this.gallerySliderImage3Description = pageContent.gallerySliderImage3['description'];
+      // Gallery Slider 4
+      pageContent.gallerySliderImage4 = pageContent.gallerySliderImage4 ? pageContent.gallerySliderImage4 : {};
+      pageContent.gallerySliderImage4['url'] = pageContent.gallerySliderImage4['url'] ? pageContent.gallerySliderImage4['url'] : '';
+      pageContent.gallerySliderImage4['description'] = pageContent.gallerySliderImage4['description'] ? pageContent.gallerySliderImage4['description'] : '';
+      this.gallerySliderImage4Src = pageContent.gallerySliderImage4['url'];
+      this.gallerySliderImage4Description = pageContent.gallerySliderImage4['description'];
+      // Gallery Slider 5
+      pageContent.gallerySliderImage5 = pageContent.gallerySliderImage5 ? pageContent.gallerySliderImage5 : {};
+      pageContent.gallerySliderImage5['url'] = pageContent.gallerySliderImage5['url'] ? pageContent.gallerySliderImage5['url'] : '';
+      pageContent.gallerySliderImage5['description'] = pageContent.gallerySliderImage5['description'] ? pageContent.gallerySliderImage5['description'] : '';
+      this.gallerySliderImage5Src = pageContent.gallerySliderImage5['url'];
+      this.gallerySliderImage5Description = pageContent.gallerySliderImage5['description'];
+      // Gallery Slider 6
+      pageContent.gallerySliderImage6 = pageContent.gallerySliderImage6 ? pageContent.gallerySliderImage6 : {};
+      pageContent.gallerySliderImage6['url'] = pageContent.gallerySliderImage6['url'] ? pageContent.gallerySliderImage6['url'] : '';
+      pageContent.gallerySliderImage6['description'] = pageContent.gallerySliderImage6['description'] ? pageContent.gallerySliderImage6['description'] : '';
+      this.gallerySliderImage6Src = pageContent.gallerySliderImage6['url'];
+      this.gallerySliderImage6Description = pageContent.gallerySliderImage6['description'];
+      // Gallery Slider 7
+      pageContent.gallerySliderImage7 = pageContent.gallerySliderImage7 ? pageContent.gallerySliderImage7 : {};
+      pageContent.gallerySliderImage7['url'] = pageContent.gallerySliderImage7['url'] ? pageContent.gallerySliderImage7['url'] : '';
+      pageContent.gallerySliderImage7['description'] = pageContent.gallerySliderImage7['description'] ? pageContent.gallerySliderImage7['description'] : '';
+      this.gallerySliderImage7Src = pageContent.gallerySliderImage7['url'];
+      this.gallerySliderImage7Description = pageContent.gallerySliderImage7['description'];
+      // Gallery Slider 8
+      pageContent.gallerySliderImage8 = pageContent.gallerySliderImage8 ? pageContent.gallerySliderImage8 : {};
+      pageContent.gallerySliderImage8['url'] = pageContent.gallerySliderImage8['url'] ? pageContent.gallerySliderImage8['url'] : '';
+      pageContent.gallerySliderImage8['description'] = pageContent.gallerySliderImage8['description'] ? pageContent.gallerySliderImage8['description'] : '';
+      this.gallerySliderImage8Src = pageContent.gallerySliderImage8['url'];
+      this.gallerySliderImage8Description = pageContent.gallerySliderImage8['description'];
+      // Gallery Slider 9
+      pageContent.gallerySliderImage9 = pageContent.gallerySliderImage9 ? pageContent.gallerySliderImage9 : {};
+      pageContent.gallerySliderImage9['url'] = pageContent.gallerySliderImage9['url'] ? pageContent.gallerySliderImage9['url'] : '';
+      pageContent.gallerySliderImage9['description'] = pageContent.gallerySliderImage9['description'] ? pageContent.gallerySliderImage9['description'] : '';
+      this.gallerySliderImage9Src = pageContent.gallerySliderImage9['url'];
+      this.gallerySliderImage9Description = pageContent.gallerySliderImage9['description'];
+      // Gallery Slider 10
+      pageContent.gallerySliderImage10 = pageContent.gallerySliderImage10 ? pageContent.gallerySliderImage10 : {};
+      pageContent.gallerySliderImage10['url'] = pageContent.gallerySliderImage10['url'] ? pageContent.gallerySliderImage10['url'] : '';
+      pageContent.gallerySliderImage10['description'] = pageContent.gallerySliderImage10['description'] ? pageContent.gallerySliderImage10['description'] : '';
+      this.gallerySliderImage10Src = pageContent.gallerySliderImage10['url'];
+      this.gallerySliderImage10Description = pageContent.gallerySliderImage10['description'];
     });
 
     // Meet The Pastor page
@@ -414,10 +522,7 @@ export class AdminComponent implements OnInit {
   }
 
   // Gallery page
-  // Gallery page
-  // Gallery page
-  // Gallery page
-  // Gallery page
+  // No text to update, images only
 
   // Meet The Pastor page
   savePastorBiography() {
@@ -485,6 +590,49 @@ export class AdminComponent implements OnInit {
   // ----------------------------
   // ----------------------------
 
+
+
+  // Reset all uploading image variables to false except the current one
+  uploadingImageVariable(variableName) {
+    // Set all of them to false
+    // Home page
+    this.homeBackgroundImageUploading = false;
+    this.homeSliderImage1Uploading = false;
+    this.homeSliderImage2Uploading = false;
+    this.homeSliderImage3Uploading = false;
+    this.homeSliderImage4Uploading = false;
+    this.homeSliderImage5Uploading = false;
+    // Calendar page
+    this.calendarSliderImage1Uploading = false;
+    this.calendarSliderImage2Uploading = false;
+    this.calendarSliderImage3Uploading = false;
+    this.calendarSliderImage4Uploading = false;
+    this.calendarSliderImage5Uploading = false;
+    // Gallery page
+    this.gallerySliderImage1Uploading = false;
+    this.gallerySliderImage2Uploading = false;
+    this.gallerySliderImage3Uploading = false;
+    this.gallerySliderImage4Uploading = false;
+    this.gallerySliderImage5Uploading = false;
+    this.gallerySliderImage6Uploading = false;
+    this.gallerySliderImage7Uploading = false;
+    this.gallerySliderImage8Uploading = false;
+    this.gallerySliderImage9Uploading = false;
+    this.gallerySliderImage10Uploading = false;
+    // Meet The Pastor page
+    this.pastorImageUploading = false;
+    // History page
+    this.historyImageUploading = false;
+    // Set given variable to be true, show the upload progress bar for this image
+    this[variableName] = true;
+  }
+
+
+
+  // Home page
+  // Home page
+  // Home page
+  // Home page
   // Home page
   homeBackgroundImageDetection(event) {
     this.homeBackgroundImageSelectedFile = event.target.files;
@@ -509,12 +657,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.homeBackgroundImageUploading = true;
-    this.homeSliderImage1Uploading = false;
-    this.homeSliderImage2Uploading = false;
-    this.homeSliderImage3Uploading = false;
-    this.homeSliderImage4Uploading = false;
-    this.homeSliderImage5Uploading = false;
+    this.uploadingImageVariable('homeBackgroundImageUploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.homeBackgroundImageSelectedFile.item(0));
     this.currentUpload.description = this.homeBackgroundImageDescription.trim();
@@ -533,12 +676,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.homeBackgroundImageUploading = false;
-    this.homeSliderImage1Uploading = true;
-    this.homeSliderImage2Uploading = false;
-    this.homeSliderImage3Uploading = false;
-    this.homeSliderImage4Uploading = false;
-    this.homeSliderImage5Uploading = false;
+    this.uploadingImageVariable('homeSliderImage1Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.homeSliderImage1SelectedFile.item(0));
     this.currentUpload.description = this.homeSliderImage1Description.trim();
@@ -557,12 +695,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.homeBackgroundImageUploading = false;
-    this.homeSliderImage1Uploading = false;
-    this.homeSliderImage2Uploading = true;
-    this.homeSliderImage3Uploading = false;
-    this.homeSliderImage4Uploading = false;
-    this.homeSliderImage5Uploading = false;
+    this.uploadingImageVariable('homeSliderImage2Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.homeSliderImage2SelectedFile.item(0));
     this.currentUpload.description = this.homeSliderImage2Description.trim();
@@ -581,12 +714,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.homeBackgroundImageUploading = false;
-    this.homeSliderImage1Uploading = false;
-    this.homeSliderImage2Uploading = false;
-    this.homeSliderImage3Uploading = true;
-    this.homeSliderImage4Uploading = false;
-    this.homeSliderImage5Uploading = false;
+    this.uploadingImageVariable('homeSliderImage3Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.homeSliderImage3SelectedFile.item(0));
     this.currentUpload.description = this.homeSliderImage3Description.trim();
@@ -605,12 +733,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.homeBackgroundImageUploading = false;
-    this.homeSliderImage1Uploading = false;
-    this.homeSliderImage2Uploading = false;
-    this.homeSliderImage3Uploading = false;
-    this.homeSliderImage4Uploading = true;
-    this.homeSliderImage5Uploading = false;
+    this.uploadingImageVariable('homeSliderImage4Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.homeSliderImage4SelectedFile.item(0));
     this.currentUpload.description = this.homeSliderImage4Description.trim();
@@ -629,12 +752,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.homeBackgroundImageUploading = false;
-    this.homeSliderImage1Uploading = false;
-    this.homeSliderImage2Uploading = false;
-    this.homeSliderImage3Uploading = false;
-    this.homeSliderImage4Uploading = false;
-    this.homeSliderImage5Uploading = true;
+    this.uploadingImageVariable('homeSliderImage5Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.homeSliderImage5SelectedFile.item(0));
     this.currentUpload.description = this.homeSliderImage5Description.trim();
@@ -649,6 +767,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
+
+
+  // Calendar page
+  // Calendar page
+  // Calendar page
+  // Calendar page
   // Calendar page
   calendarSliderImage1Detection(event) {
     this.calendarSliderImage1SelectedFile = event.target.files;
@@ -670,11 +794,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.calendarSliderImage1Uploading = true;
-    this.calendarSliderImage2Uploading = false;
-    this.calendarSliderImage3Uploading = false;
-    this.calendarSliderImage4Uploading = false;
-    this.calendarSliderImage5Uploading = false;
+    this.uploadingImageVariable('calendarSliderImage1Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.calendarSliderImage1SelectedFile.item(0));
     this.currentUpload.description = this.calendarSliderImage1Description.trim();
@@ -693,11 +813,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.calendarSliderImage1Uploading = false;
-    this.calendarSliderImage2Uploading = true;
-    this.calendarSliderImage3Uploading = false;
-    this.calendarSliderImage4Uploading = false;
-    this.calendarSliderImage5Uploading = false;
+    this.uploadingImageVariable('calendarSliderImage2Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.calendarSliderImage2SelectedFile.item(0));
     this.currentUpload.description = this.calendarSliderImage2Description.trim();
@@ -716,11 +832,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.calendarSliderImage1Uploading = false;
-    this.calendarSliderImage2Uploading = false;
-    this.calendarSliderImage3Uploading = true;
-    this.calendarSliderImage4Uploading = false;
-    this.calendarSliderImage5Uploading = false;
+    this.uploadingImageVariable('calendarSliderImage3Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.calendarSliderImage3SelectedFile.item(0));
     this.currentUpload.description = this.calendarSliderImage3Description.trim();
@@ -739,11 +851,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.calendarSliderImage1Uploading = false;
-    this.calendarSliderImage2Uploading = false;
-    this.calendarSliderImage3Uploading = false;
-    this.calendarSliderImage4Uploading = true;
-    this.calendarSliderImage5Uploading = false;
+    this.uploadingImageVariable('calendarSliderImage4Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.calendarSliderImage4SelectedFile.item(0));
     this.currentUpload.description = this.calendarSliderImage4Description.trim();
@@ -762,11 +870,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.calendarSliderImage1Uploading = false;
-    this.calendarSliderImage2Uploading = false;
-    this.calendarSliderImage3Uploading = false;
-    this.calendarSliderImage4Uploading = false;
-    this.calendarSliderImage5Uploading = true;
+    this.uploadingImageVariable('calendarSliderImage5Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.calendarSliderImage5SelectedFile.item(0));
     this.currentUpload.description = this.calendarSliderImage5Description.trim();
@@ -781,12 +885,240 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  // Gallery page
-  // Gallery page
-  // Gallery page
-  // Gallery page
-  // Gallery page
 
+
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  // Gallery page
+  gallerySliderImage1Detection(event) {
+    this.gallerySliderImage1SelectedFile = event.target.files;
+  }
+  gallerySliderImage2Detection(event) {
+    this.gallerySliderImage2SelectedFile = event.target.files;
+  }
+  gallerySliderImage3Detection(event) {
+    this.gallerySliderImage3SelectedFile = event.target.files;
+  }
+  gallerySliderImage4Detection(event) {
+    this.gallerySliderImage4SelectedFile = event.target.files;
+  }
+  gallerySliderImage5Detection(event) {
+    this.gallerySliderImage5SelectedFile = event.target.files;
+  }
+  gallerySliderImage6Detection(event) {
+    this.gallerySliderImage6SelectedFile = event.target.files;
+  }
+  gallerySliderImage7Detection(event) {
+    this.gallerySliderImage7SelectedFile = event.target.files;
+  }
+  gallerySliderImage8Detection(event) {
+    this.gallerySliderImage8SelectedFile = event.target.files;
+  }
+  gallerySliderImage9Detection(event) {
+    this.gallerySliderImage9SelectedFile = event.target.files;
+  }
+  gallerySliderImage10Detection(event) {
+    this.gallerySliderImage10SelectedFile = event.target.files;
+  }
+  gallerySliderImage1Upload() {
+    if (this.gallerySliderImage1Description.trim() === '' || document.getElementById("gallerySliderImage1FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage1Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage1SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage1Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage1', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage1Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage1Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage2Upload() {
+    if (this.gallerySliderImage2Description.trim() === '' || document.getElementById("gallerySliderImage2FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage2Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage2SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage2Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage2', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage2Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage2Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage3Upload() {
+    if (this.gallerySliderImage3Description.trim() === '' || document.getElementById("gallerySliderImage3FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage3Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage3SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage3Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage3', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage3Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage3Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage4Upload() {
+    if (this.gallerySliderImage4Description.trim() === '' || document.getElementById("gallerySliderImage4FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage4Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage4SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage4Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage4', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage4Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage4Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage5Upload() {
+    if (this.gallerySliderImage5Description.trim() === '' || document.getElementById("gallerySliderImage5FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage5Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage5SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage5Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage5', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage5Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage5Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage6Upload() {
+    if (this.gallerySliderImage6Description.trim() === '' || document.getElementById("gallerySliderImage6FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage6Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage6SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage6Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage6', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage6Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage6Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage7Upload() {
+    if (this.gallerySliderImage7Description.trim() === '' || document.getElementById("gallerySliderImage7FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage7Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage7SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage7Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage7', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage7Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage7Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage8Upload() {
+    if (this.gallerySliderImage8Description.trim() === '' || document.getElementById("gallerySliderImage8FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage8Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage8SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage8Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage8', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage8Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage8Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage9Upload() {
+    if (this.gallerySliderImage9Description.trim() === '' || document.getElementById("gallerySliderImage9FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage9Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage9SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage9Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage9', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage9Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage9Uploading = false;
+      }, 2000);
+    });
+  }
+  gallerySliderImage10Upload() {
+    if (this.gallerySliderImage10Description.trim() === '' || document.getElementById("gallerySliderImage10FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('gallerySliderImage10Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.gallerySliderImage10SelectedFile.item(0));
+    this.currentUpload.description = this.gallerySliderImage10Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('galleryPage', 'gallerySliderImage10', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.gallerySliderImage10Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.gallerySliderImage10Uploading = false;
+      }, 2000);
+    });
+  }
+
+
+
+  // Meet The Pastor page
+  // Meet The Pastor page
+  // Meet The Pastor page
+  // Meet The Pastor page
   // Meet The Pastor page
   pastorImageDetection(event) {
     this.pastorImageSelectedFile = event.target.files;
@@ -796,7 +1128,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.pastorImageUploading = true;
+    this.uploadingImageVariable('pastorImageUploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.pastorImageSelectedFile.item(0));
     this.currentUpload.description = this.pastorImageDescription.trim();
@@ -811,6 +1143,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
+
+
+  // Church History page
+  // Church History page
+  // Church History page
+  // Church History page
   // Church History page
   historyImageDetection(event) {
     this.historyImageSelectedFile = event.target.files;
@@ -820,7 +1158,7 @@ export class AdminComponent implements OnInit {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.historyImageUploading = true;
+    this.uploadingImageVariable('historyImageUploading');
     // Set file-to-be-uploaded to the file taken from the input fields
     this.currentUpload = new Image(this.historyImageSelectedFile.item(0));
     this.currentUpload.description = this.historyImageDescription.trim();
@@ -836,6 +1174,7 @@ export class AdminComponent implements OnInit {
   }
   
   
+
   
   
   // ----------------------------

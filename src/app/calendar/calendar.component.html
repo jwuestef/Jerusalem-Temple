@@ -1,15 +1,30 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div style="height: 64px;"></div>
 
 
 
-<p style="margin: 0;">
-  calendar works!
-</p>
+<div class="container">
+
+  <h2>Upcoming Events</h2>
+  <div style="width: 30%; height: 1rem; background-color: #f39c12;"></div>
+  <div style="height: 5rem;;"></div>
+
+  <div class="row">
+
+    <!-- Spacer -->
+    <div class="col-md-1"></div>
+
+    <!-- Paragraph listing upcoming events -->
+    <div class="col-md-5">
+      <p id="calendarSchedule"></p>
+    </div>
+
+    <!-- Image gallery -->
+    <div class="col-md-6">
+      <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+    </div>
+
+  </div>
+</div>
+
+
+

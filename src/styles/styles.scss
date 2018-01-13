@@ -14,3 +14,10 @@
 .btn-primary:hover {
   color: $teal;
 }
+
+
+
+// Make the cursor a pointer when over links
+a {
+  cursor: pointer;
+}
