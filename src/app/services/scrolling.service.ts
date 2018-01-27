@@ -10,11 +10,11 @@ export class ScrollingService {
  
 
 
-  constructor(private router: Router, private _scrollToService: ScrollToService) { }
+  constructor(private router: Router, private scrollToService: ScrollToService) { }
  
 
 
-  public triggerScrollTo(page, scrollTarget) {
+  public triggerScrollToPageAndTarget(page, scrollTarget) {
     
     // Set scrolling options
     const config: ScrollToConfigOptions = {
@@ -27,13 +27,28 @@ export class ScrollingService {
     this.router.navigateByUrl(page).then( () => {
       // Give the content a chance to load... then scroll to the provided target
       window.setTimeout( () => {
-        this._scrollToService.scrollTo(config);
+        this.scrollToService.scrollTo(config);
       }, 500)
     }).catch( (err) => {
       alert('Navigation error. Please contact the webmaster if this error continues.');
       console.log(err);
     })
  
+  }
+ 
+
+
+  public triggerScrollToTargetOnCurrentPage(scrollTarget) {
+    
+    // Set scrolling options
+    const config: ScrollToConfigOptions = {
+      target: scrollTarget,
+      duration: 500,
+      easing: 'easeOutElastic'
+    };
+
+    this.scrollToService.scrollTo(config);
+
   }
 
 

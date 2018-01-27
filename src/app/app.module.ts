@@ -25,6 +25,9 @@ import { TexteditorComponent } from './services/texteditor.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { PastorComponent } from './pastor/pastor.component';
+import { HistoryComponent } from './history/history.component';
 
 
 // Services
@@ -48,7 +51,10 @@ import { NgxGalleryModule } from 'ngx-gallery';
     TexteditorComponent,
     HomeComponent,
     AdminComponent,
-    CalendarComponent
+    CalendarComponent,
+    GalleryComponent,
+    PastorComponent,
+    HistoryComponent
   ],
   imports: [
     // Angular Modules

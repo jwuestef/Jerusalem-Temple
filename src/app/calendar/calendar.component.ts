@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+
 import { ContentService } from '../services/content.service';
+import { ScrollingService } from '../services/scrolling.service';
 
 
 
@@ -26,17 +27,19 @@ export class CalendarComponent implements OnInit {
 
 
 
-  constructor(private contentService: ContentService) { }
+  constructor(private contentService: ContentService, private scrollingService: ScrollingService) { }
 
 
 
   ngOnInit() {
+    // When the page loads from another page that is scrolled down, so is this one.
+    // Force it to the top of the page. Side effect of this work-around is this looks like a cool transition animation!
+    this.scrollingService.triggerScrollToTargetOnCurrentPage('topOfPage');
     // Configure image gallery options
     this.galleryOptions = [
       {
-          width: '600px',
-          height: '400px',
-          thumbnailsColumns: 4,
+          width: '500px',
+          height: '750px',
           imageAnimation: NgxGalleryAnimation.Slide,
           imageAutoPlay: true,
           imageAutoPlayInterval: 5000,
@@ -54,20 +57,17 @@ export class CalendarComponent implements OnInit {
           previewKeyboardNavigation: true,
           previewInfinityMove: true
       },
-      // max-width 800
+      // max-width 991
       {
-          breakpoint: 800,
-          width: '100%',
-          height: '600px',
-          thumbnailsColumns: 3,
-          imagePercent: 80,
-          thumbnailsPercent: 20,
-          thumbnailsMargin: 20,
-          thumbnailMargin: 20
+          breakpoint: 991,
+          width: '400px',
+          height: '600px'
       },
       // max-width 400
       {
           breakpoint: 400,
+          width: '300px',
+          height: '450px',
           preview: false
       }
     ];

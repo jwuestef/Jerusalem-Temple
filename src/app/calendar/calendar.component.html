@@ -1,12 +1,13 @@
-<div style="height: 64px;"></div>
+<div id="topOfPage" style="height: 64px;"></div>
+<br>
 
 
+<div class="container fade-in">
 
-<div class="container">
+  <h1>Upcoming Events</h1>
+  <div class="headerUnderline"></div>
 
-  <h2>Upcoming Events</h2>
-  <div style="width: 30%; height: 1rem; background-color: #f39c12;"></div>
-  <div style="height: 5rem;;"></div>
+  <div style="height: 5rem;"></div>
 
   <div class="row">
 
@@ -15,12 +16,16 @@
 
     <!-- Paragraph listing upcoming events -->
     <div class="col-md-5">
-      <p id="calendarSchedule"></p>
+      <p id="calendarSchedule">Loading...</p>
+      <!-- Spacer after content, to make sure it doesn't butt up right against the footer -->
+      <div style="height: 64px;"></div>
     </div>
-
+    
     <!-- Image gallery -->
-    <div class="col-md-6">
+    <div class="col-md-6 imageGalleryWrapper">
       <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+      <!-- Spacer after content, to make sure it doesn't butt up right against the footer -->
+      <div style="height: 64px;"></div>
     </div>
 
   </div>

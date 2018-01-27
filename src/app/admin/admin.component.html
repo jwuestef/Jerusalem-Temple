@@ -409,7 +409,7 @@
         <br>
         <label for="calendarSliderImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
         <input type="file" id="calendarSliderImage1FileInput" (change)="calendarSliderImage1Detection($event)">
-        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <p><em>*For proper appearance, image should have a 1:2 aspect ratio.</em></p>
         <br>
         <label for="calendarSliderImage1Description">Description of image: <em style="color: red;">*required</em></label>
         <input type="text" id="calendarSliderImage1Description" placeholder="description" [(ngModel)]="calendarSliderImage1Description">
@@ -432,7 +432,7 @@
         <br>
         <label for="calendarSliderImage2FileInput">Image to upload: <em style="color: red;">*required</em></label>
         <input type="file" id="calendarSliderImage2FileInput" (change)="calendarSliderImage2Detection($event)">
-        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <p><em>*For proper appearance, image should have a 1:2 aspect ratio.</em></p>
         <br>
         <label for="calendarSliderImage2Description">Description of image: <em style="color: red;">*required</em></label>
         <input type="text" id="calendarSliderImage2Description" placeholder="description" [(ngModel)]="calendarSliderImage2Description">
@@ -461,7 +461,7 @@
         <br>
         <label for="calendarSliderImage3FileInput">Image to upload: <em style="color: red;">*required</em></label>
         <input type="file" id="calendarSliderImage3FileInput" (change)="calendarSliderImage3Detection($event)">
-        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <p><em>*For proper appearance, image should have a 1:2 aspect ratio.</em></p>
         <br>
         <label for="calendarSliderImage3Description">Description of image: <em style="color: red;">*required</em></label>
         <input type="text" id="calendarSliderImage3Description" placeholder="description" [(ngModel)]="calendarSliderImage3Description">
@@ -484,7 +484,7 @@
         <br>
         <label for="calendarSliderImage4FileInput">Image to upload: <em style="color: red;">*required</em></label>
         <input type="file" id="calendarSliderImage4FileInput" (change)="calendarSliderImage4Detection($event)">
-        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <p><em>*For proper appearance, image should have a 1:2 aspect ratio.</em></p>
         <br>
         <label for="calendarSliderImage4Description">Description of image: <em style="color: red;">*required</em></label>
         <input type="text" id="calendarSliderImage4Description" placeholder="description" [(ngModel)]="calendarSliderImage4Description">
@@ -513,7 +513,7 @@
         <br>
         <label for="calendarSliderImage5FileInput">Image to upload: <em style="color: red;">*required</em></label>
         <input type="file" id="calendarSliderImage5FileInput" (change)="calendarSliderImage5Detection($event)">
-        <p><em>*For proper appearance, image should have a 1:1 aspect ratio.</em></p>
+        <p><em>*For proper appearance, image should have a 1:2 aspect ratio.</em></p>
         <br>
         <label for="calendarSliderImage5Description">Description of image: <em style="color: red;">*required</em></label>
         <input type="text" id="calendarSliderImage5Description" placeholder="description" [(ngModel)]="calendarSliderImage5Description">
@@ -542,15 +542,277 @@
   <div id="gallerySectionScrollAnchor"></div>
   <div style="height: 64px;"></div>
   <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
-  <h1 style="margin-left: 5vw;">Gallery Page</h1>
+
+
+
+  <h3 class="pageSubCategory">Image slider</h3>
+  <div class="container">
+
+    <!-- Image 1 and 2 update form -->
+    <div class="row">
+
+      <!-- Image1 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage1Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage1Src" id="gallerySliderImage1Existing" style="width: 100px; height: auto" [src]="gallerySliderImage1Src" [alt]="gallerySliderImage1Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage1FileInput" (change)="gallerySliderImage1Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage1Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage1Description" placeholder="description" [(ngModel)]="gallerySliderImage1Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage1Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage1Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image2 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage2Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage2Src" id="gallerySliderImage2Existing" style="width: 100px; height: auto" [src]="gallerySliderImage2Src" [alt]="gallerySliderImage2Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage2FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage2FileInput" (change)="gallerySliderImage2Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage2Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage2Description" placeholder="description" [(ngModel)]="gallerySliderImage2Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage2Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage2Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 1 and 2 -->
+
+    <!-- Image 3 and 4 update form -->
+    <div class="row">
+
+      <!-- Image3 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage3Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage3Src" id="gallerySliderImage3Existing" style="width: 100px; height: auto" [src]="gallerySliderImage3Src" [alt]="gallerySliderImage3Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage3FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage3FileInput" (change)="gallerySliderImage3Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage3Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage3Description" placeholder="description" [(ngModel)]="gallerySliderImage3Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage3Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage3Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image4 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage4Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage4Src" id="gallerySliderImage4Existing" style="width: 100px; height: auto" [src]="gallerySliderImage4Src" [alt]="gallerySliderImage4Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage4FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage4FileInput" (change)="gallerySliderImage4Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage4Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage4Description" placeholder="description" [(ngModel)]="gallerySliderImage4Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage4Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage4Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 3 and 4 -->
+
+    <!-- Image 5 and 6 update form -->
+    <div class="row">
+
+      <!-- Image5 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage5Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage5Src" id="gallerySliderImage5Existing" style="width: 100px; height: auto" [src]="gallerySliderImage5Src" [alt]="gallerySliderImage5Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage5FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage5FileInput" (change)="gallerySliderImage5Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage5Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage5Description" placeholder="description" [(ngModel)]="gallerySliderImage5Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage5Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage5Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image6 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage6Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage6Src" id="gallerySliderImage6Existing" style="width: 100px; height: auto" [src]="gallerySliderImage6Src" [alt]="gallerySliderImage6Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage6FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage6FileInput" (change)="gallerySliderImage6Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage6Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage6Description" placeholder="description" [(ngModel)]="gallerySliderImage6Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage6Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage6Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 5 and 6 -->
+
+    <!-- Image 7 and 8 update form -->
+    <div class="row">
+
+      <!-- Image7 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage7Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage7Src" id="gallerySliderImage7Existing" style="width: 100px; height: auto" [src]="gallerySliderImage7Src" [alt]="gallerySliderImage7Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage7FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage7FileInput" (change)="gallerySliderImage7Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage7Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage7Description" placeholder="description" [(ngModel)]="gallerySliderImage7Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage7Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage7Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image8 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage8Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage8Src" id="gallerySliderImage8Existing" style="width: 100px; height: auto" [src]="gallerySliderImage8Src" [alt]="gallerySliderImage8Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage8FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage8FileInput" (change)="gallerySliderImage8Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage8Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage8Description" placeholder="description" [(ngModel)]="gallerySliderImage8Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage8Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage8Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 7 and 8 -->
+
+    <!-- Image 9 and 10 update form -->
+    <div class="row">
+
+      <!-- Image9 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage9Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage9Src" id="gallerySliderImage9Existing" style="width: 100px; height: auto" [src]="gallerySliderImage9Src" [alt]="gallerySliderImage9Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage9FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage9FileInput" (change)="gallerySliderImage9Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage9Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage9Description" placeholder="description" [(ngModel)]="gallerySliderImage9Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage9Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage9Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Image10 upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="gallerySliderImage10Existing">Existing Image:</label>
+        <img *ngIf="gallerySliderImage10Src" id="gallerySliderImage10Existing" style="width: 100px; height: auto" [src]="gallerySliderImage10Src" [alt]="gallerySliderImage10Description">
+        <br>
+        <br>
+        <label for="gallerySliderImage10FileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="gallerySliderImage10FileInput" (change)="gallerySliderImage10Detection($event)">
+        <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+        <br>
+        <label for="gallerySliderImage10Description">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="gallerySliderImage10Description" placeholder="description" [(ngModel)]="gallerySliderImage10Description">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="gallerySliderImage10Upload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="gallerySliderImage10Uploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating images 9 and 10 -->
+
+
+    
+
+  </div>
+  <!-- End of image slider -->
   
   
   

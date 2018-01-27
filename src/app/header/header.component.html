@@ -7,18 +7,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" (click)="scrollingService.triggerScrollTo('home', 'landingSection');">Jerusalem Temple Logo</a>
+      <a class="navbar-brand" (click)="scrollingService.triggerScrollToPageAndTarget('home', 'landingSection');">Jerusalem Temple Logo</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="scrollingService.triggerScrollTo('home', 'landingSection');">Home</a></li>
-        <li><a (click)="scrollingService.triggerScrollTo('home', 'welcomeSection');">Welcome</a></li>
-        <li><a (click)="scrollingService.triggerScrollTo('home', 'ourBeliefsSection');">Our Beliefs</a></li>
-        <li><a (click)="scrollingService.triggerScrollTo('home', 'aboutUsSection');">About</a></li>
+        <li><a (click)="scrollingService.triggerScrollToPageAndTarget('home', 'landingSection');">Home</a></li>
+        <li><a (click)="scrollingService.triggerScrollToPageAndTarget('home', 'welcomeSection');">Welcome</a></li>
+        <li><a (click)="scrollingService.triggerScrollToPageAndTarget('home', 'ourBeliefsSection');">Our Beliefs</a></li>
+        <li><a (click)="scrollingService.triggerScrollToPageAndTarget('home', 'aboutUsSection');">About</a></li>
         <li><a routerLink="/calendar">Calendar</a></li>
         <li><a href="#">Donate</a></li>
-        <li><a (click)="scrollingService.triggerScrollTo('home', 'contactFormsSection');">Contact</a></li>
+        <li><a (click)="scrollingService.triggerScrollToPageAndTarget('home', 'contactFormsSection');">Contact</a></li>
       </ul>
     </div>
   </div>
