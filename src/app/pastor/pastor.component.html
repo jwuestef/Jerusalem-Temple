@@ -1,11 +1,13 @@
-<div style="height: 64px;"></div>
+<div id="topOfPage" style="height: 64px;"></div>
+<br>
 
 
 
-<div class="container">
+<div class="container fade-in">
 
-  <h2>Meet The Pastor</h2>
-  <div style="width: 30%; height: 1rem; background-color: #f39c12;"></div>
+  <h1>Meet The Pastor</h1>
+  <div class="headerUnderline"></div>
+
   <div style="height: 5rem;"></div>
 
   <div class="row">
@@ -14,13 +16,17 @@
     <div class="col-md-1"></div>
 
     <!-- Photo of pastor -->
-    <div class="col-md-5">
+    <div class="col-md-5 imageGalleryWrapper">
       <img [src]="pastorImageSrc" [alt]="pastorImageDescription">
+      <!-- Spacer after content, to make sure it doesn't butt up right against the footer -->
+      <div style="height: 64px;"></div>
     </div>
 
     <!-- Paragraph of biography of pastor -->
     <div class="col-md-6">
-      <p id="pastorBiography"></p>
+      <p id="pastorBiography">Loading...</p>
+      <!-- Spacer after content, to make sure it doesn't butt up right against the footer -->
+      <div style="height: 64px;"></div>
     </div>
 
   </div>

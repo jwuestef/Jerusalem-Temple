@@ -4,9 +4,11 @@
 
 
       <div class="row" style="color: #18bc9c;">
-        <div class="col-md-4" id="footerSchedule"></div>
-        <div class="col-md-4" id="footerAddress"></div>
-        <div class="col-md-4" id="footerMap"></div>
+        <p class="col-md-4 col-sm-12 col-xs-12 footerContent" id="footerSchedule">Loading...</p>
+        <p class="col-md-4 col-sm-12 col-xs-12 footerContent" id="footerAddress">Loading...</p>
+        <div class="col-md-4 col-sm-12 col-xs-12 footerContent iframeWrapper">
+          <iframe *ngIf="footerIframeSrc" width="250" height="200" frameborder="0" [src]="footerIframeSrc" allowfullscreen></iframe>
+        </div>
       </div>
 
 

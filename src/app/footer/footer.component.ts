@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { ContentService } from '../services/content.service';
 
@@ -10,10 +11,10 @@ import { ContentService } from '../services/content.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  footerIframeSrc;
 
 
-
-  constructor(private contentService: ContentService) { }
+  constructor(private contentService: ContentService, private sanitizer: DomSanitizer) { }
 
 
 
@@ -34,7 +35,7 @@ export class FooterComponent implements OnInit {
       pageContent.footerAddress = pageContent.footerAddress ? pageContent.footerAddress : '';
       $('#footerAddress').html(pageContent.footerAddress);
       pageContent.footerMap = pageContent.footerMap ? pageContent.footerMap : '';
-      $('#footerMap').html(pageContent.footerMap);
+      this.footerIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(pageContent.footerMap);
       // Images
         // None
     });

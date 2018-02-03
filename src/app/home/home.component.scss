@@ -7,20 +7,143 @@ section {
   padding-bottom: 5rem;
 }
 
+// Buffer between section start and header
+.sectionBuffer {
+  height: 4rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  .sectionBuffer {
+    height: 2rem;
+  }
+}
+
+// Add fade-in animation to whole page
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+section {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1.5s;
+  -moz-animation-duration:1.5s;
+  animation-duration:1.5s;
+}
 
 
-// Landing/splash image is full screen at top of page
-.splashImage {
-  min-width: 99vw;
-  max-width: 99vw;
-  height: 100vh;
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ------------------ LANDING SECTION ----------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
+// Splash landing image
+#landingSection {
+  position: relative;
   overflow: hidden;
+  height: 100vh;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #191919;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+
+
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// -------- SCHEDULE AND MISSION STATEMENT SECTION ---------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
+// Gold underline beneath header
+#scheduleAndMission .headerUnderline {
+  width: 50%;
+  height: 1rem;
+  background-color: #f39c12;
+  margin-bottom: 1.5rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  // Add margins to separate the sections better, since they'll be stacked ontop one another
+  #scheduleAndMission h2 {
+    margin-top: 3rem;
+  }
+  // Make the header underlines the full width
+  #scheduleAndMission .headerUnderline {
+    width: 100%;
+  }
+}
+
+
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ------------------ WELCOME SECTION ----------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
+
+// Make the pastor's image centered in it's div
+#welcomeSection .pastorImageWrapper {
+  text-align: center;
+}
+
+// Image of pastor 
+#welcomeSection .pastorImage {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+// Logo and church name
+#welcomeSection .logoAndName {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+#welcomeSection .logoAndName h2 {
+  margin: 0;
+}
+
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #welcomeSection .pastorImage {
+    margin-top: 2rem;
+    width: 50%;
+  }
+  #welcomeSection .logoAndName img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  #welcomeSection .logoAndName {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 
 
 /* Image slider */
-div#homeSlider {
+#homeSlider {
   overflow: hidden;
   position: relative;
   float: left;
@@ -31,12 +154,12 @@ div#homeSlider {
   margin-left: 12%;
   background-color: rgba(189,189,189, 0.5);
 }
-div#homeSlider figure img {
-  width: 16.666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666%;
+#homeSlider figure img {
+  width: 16.6666666666666666666666666666666%;
   position: relative;
   float: left;
 }
-div#homeSlider figure {
+#homeSlider figure {
   position: relative;
   width: 600%;
   margin: 0;
@@ -66,6 +189,24 @@ div#homeSlider figure {
 
 
 
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ---------------- OUR BELIEFS SECTION --------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
+
+
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ------------------- ABOUT SECTION -----------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
 // The panels in the About section
 .aboutPanel {
   text-align: center;
@@ -82,7 +223,6 @@ div#homeSlider figure {
   text-decoration: underline;
 }
 
-
 // The images for the About section, labeling Calendar, Gallery, Meet The Pastor, and History
 .aboutPanel img {
   width: 75%;
@@ -90,7 +230,7 @@ div#homeSlider figure {
   margin: auto auto;
 }
 
-
+// Keep everything centered
 @media only screen and (min-width : 768px) {
   .is-table-row {
       display: table;
@@ -101,3 +241,23 @@ div#homeSlider figure {
       vertical-align: top;
   }
 }
+
+
+
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ----------------- CHILDCARE SECTION ---------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
+
+
+
+
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ------------------ CONTACT SECTION ----------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------

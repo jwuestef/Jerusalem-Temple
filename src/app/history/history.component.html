@@ -1,11 +1,13 @@
-<div style="height: 64px;"></div>
+<div id="topOfPage" style="height: 64px;"></div>
+<br>
 
 
 
-<div class="container">
+<div class="container fade-in">
 
-  <h2>Church History</h2>
-  <div style="width: 30%; height: 1rem; background-color: #f39c12;"></div>
+  <h1>Our History</h1>
+  <div class="headerUnderline"></div>
+
   <div style="height: 5rem;"></div>
 
   <div class="row">
@@ -15,12 +17,16 @@
     
     <!-- Paragraph describing history of church -->
     <div class="col-md-6">
-      <p id="churchHistory"></p>
+      <p id="churchHistory">Loading...</p>
+      <!-- Spacer after content, to make sure it doesn't butt up right against the footer -->
+      <div style="height: 64px;"></div>
     </div>
 
     <!-- Photo of church -->
-    <div class="col-md-5">
+    <div class="col-md-5 imageGalleryWrapper">
       <img [src]="historyImageSrc" [alt]="historyImageDescription">
+      <!-- Spacer after content, to make sure it doesn't butt up right against the footer -->
+      <div style="height: 64px;"></div>
     </div>
 
   </div>

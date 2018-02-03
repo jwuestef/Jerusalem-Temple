@@ -40,6 +40,9 @@ import {
         style_formats_merge: true,
         theme: 'modern',
         textcolor_map: [
+          '2c3e50', 'Theme - Dark Blue',
+          '18bc9c', 'Theme - Teal',
+          'f39c12', 'Theme - Gold',
           '000000', 'Black',
           '993300', 'Burnt Orange',
           '333300', 'Dark Olive',

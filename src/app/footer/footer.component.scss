@@ -1,8 +1,38 @@
 
-
-
-// Remove the border radius from the navbar
+// Remove the border radius
 .navbar {
   border-radius: 0;
   margin: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+
+// Center everything vertically
+div.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+// Devices smaller than 'md' bootstrap classification
+// Separate the sections better since they'll be stacked ontop one another
+@media only screen and (max-width : 991px) {
+  .footerContent {
+    padding: 15px;
+  }
+}
+
+
+
+// Make the iframe centered in it's div...
+.iframeWrapper {
+  text-align: center;
+}
+iframe {
+  display: inline-block;
 }

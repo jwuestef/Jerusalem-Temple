@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ContentService } from '../services/content.service';
+import { ScrollingService } from '../services/scrolling.service';
 
 
 
@@ -14,11 +15,14 @@ export class PastorComponent implements OnInit {
   pastorImageDescription = '';
 
 
-  constructor(private contentService: ContentService) { }
+  constructor(private contentService: ContentService, private scrollingService: ScrollingService) { }
 
 
 
   ngOnInit() {
+    // When the page loads from another page that is scrolled down, so is this one.
+    // Force it to the top of the page. Side effect of this work-around is this looks like a cool transition animation!
+    this.scrollingService.triggerScrollToTargetOnCurrentPage('topOfPage');
     // Pull updated content from Firebase
     this.getContent();
   }
