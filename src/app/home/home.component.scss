@@ -140,8 +140,6 @@ section {
   }
 }
 
-
-
 /* Image slider */
 #homeSlider {
   overflow: hidden;
@@ -151,8 +149,14 @@ section {
   max-width: 75%;
   height: auto;
   margin: 0 auto;
-  margin-left: 12%;
+  margin-left: 2%;
   background-color: rgba(189,189,189, 0.5);
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #homeSlider {
+    margin-left: 12%;
+  }
 }
 #homeSlider figure img {
   width: 16.6666666666666666666666666666666%;
@@ -187,6 +191,20 @@ section {
   100% { left: -500%; }
 }
 
+// Gold underline beneath header
+#welcomeSection .headerUnderline {
+  width: 50%;
+  height: 1rem;
+  background-color: #f39c12;
+  margin-bottom: 1.5rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #welcomeSection .headerUnderline {
+    width: 100%;
+  }
+}
+
 
 
 
@@ -197,8 +215,37 @@ section {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 
+// Gold underline beneath header
+#ourBeliefsSection .headerUnderline {
+  width: 50%;
+  height: 1rem;
+  background-color: #f39c12;
+  margin-bottom: 1.5rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #ourBeliefsSection .headerUnderline {
+    width: 100%;
+  }
+}
 
-
+// Layout of section
+#ourBeliefsSection .beliefsAndVideo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+}
+#ourBeliefsSection iframe {
+  width: 100%;
+  height: 400px;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #ourBeliefsSection .beliefsAndVideo {
+    justify-content: center;
+  }
+}
 
 
 // ---------------------------------------------------------
@@ -207,35 +254,56 @@ section {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 
+// Gold underline beneath header
+#aboutUsSection .headerUnderline {
+  width: 25%;
+  height: 1rem;
+  background-color: #f39c12;
+  margin-bottom: 1.5rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #aboutUsSection .headerUnderline {
+    width: 100%;
+  }
+}
+
 // The panels in the About section
-.aboutPanel {
+#aboutUsSection .aboutPanel {
   text-align: center;
   cursor: pointer;
   padding: 2.5vw;
   border: 2px outset darkgray;
   box-shadow: 2px 2px 5px #888888 outset;
 }
-.aboutPanel:hover {
+#aboutUsSection .aboutPanel:hover {
   border: 2px inset darkgray;
   box-shadow: 2px 2px 5px #888888 inset;
   background-color: rgb(210, 210, 210);
   color: $teal;
   text-decoration: underline;
 }
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #aboutUsSection .aboutPanel {
+    padding-bottom: 5rem;
+  }
+}
+
 
 // The images for the About section, labeling Calendar, Gallery, Meet The Pastor, and History
-.aboutPanel img {
-  width: 75%;
+#aboutUsSection .aboutPanel img {
+  width: 66%;
   height: auto;
   margin: auto auto;
 }
 
 // Keep everything centered
 @media only screen and (min-width : 768px) {
-  .is-table-row {
+  #aboutUsSection .is-table-row {
       display: table;
   }
-  .is-table-row [class*="col-"] {
+  #aboutUsSection .is-table-row [class*="col-"] {
       float: none;
       display: table-cell;
       vertical-align: top;
@@ -261,3 +329,18 @@ section {
 // ------------------ CONTACT SECTION ----------------------
 // ---------------------------------------------------------
 // ---------------------------------------------------------
+
+// Gold underline beneath header
+#contactFormsSection .headerUnderline {
+  width: 50%;
+  height: 1rem;
+  background-color: #f39c12;
+  margin-bottom: 1.5rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #contactFormsSection .headerUnderline {
+    width: 100%;
+  }
+}
+
