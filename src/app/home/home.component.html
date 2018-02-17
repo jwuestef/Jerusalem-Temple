@@ -2,8 +2,7 @@
 <!-- Landing/splash section at top of page -->
 <section id="landingSection" style="height: 100vh;">
 
-  <img [src]="homeBackgroundImageSrc" alt="homeBackgroundImageDescription" class="splashImage">
-
+  <!-- Image loaded via background image CSS property -->
 
 </section>
 
@@ -64,7 +63,7 @@
       <!-- Left side of section, image of pastor and wife -->
       <div class="col-md-3 pastorImageWrapper">
 
-        <img src="../../assets/pastor.jpg" alt="Image of pastor" class="pastorImage">
+        <img *ngIf="homePastorImageSrc" [src]="homePastorImageSrc" [alt]="homePastorImageDescription" class="pastorImage">
 
       </div>
 
@@ -130,24 +129,27 @@
 <section id="ourBeliefsSection">
   <div class="sectionBuffer"></div>
   <div class="container-fluid">
-    <div class="row beliefsAndVideo">
 
+    <div class="row">
       <div class="col-md-5 col-md-offset-1">
         <h2>Our Beliefs</h2>
         <div class="headerUnderline"></div>
+      </div>
+    </div>
+
+    <div class="row beliefsAndVideo">
+
+      <div class="col-md-5 col-md-offset-1">
         <p id="homeBeliefs">Loading...</p>
         <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
         <div style="height: 64px;"></div>
       </div>
-
-
+      
       <div class="col-md-5 col-sm-10 col-xs-12">
         <iframe *ngIf="homeVideo" [src]="homeVideo" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
         <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
         <div style="height: 64px;"></div>
       </div>
-
-
 
     </div>
   </div>
@@ -178,37 +180,39 @@
       <div class="col-md-6 aboutPanel" routerLink="/calendar">
         <h3>Calendar of Events</h3>
         <br>
-        <img src="../../assets/calendar.png" alt="Events Calendar">
+        <img [src]="homeCalendarLinkSrc" [alt]="homeCalendarLinkDescription">
       </div>
-
+      
       <div class="col-md-6 aboutPanel" routerLink="/gallery">
         <h3>Photo Gallery</h3>
-        <br><br>
-        <img src="../../assets/gallery.png" alt="Gallery of images">
+        <br>
+        <img [src]="homeGalleryLinkSrc" [alt]="homeGalleryLinkDescription">
       </div>
-
+      
     </div>
     <!-- End of Calendar and Gallery row -->
-
+    
     <!-- Meet The Pastor and History row -->
     <div class="is-table-row">
-        
+      
       <div class="col-md-6 aboutPanel" routerLink="/pastor">
         <h3>Meet The Pastor</h3>
         <br>
-        <img src="../../assets/meet-the-pastor2.png" alt="Pastor">
+        <img [src]="homePastorLinkSrc" [alt]="homePastorLinkDescription">
       </div>
-
+      
       <div class="col-md-6 aboutPanel" routerLink="/history">
         <h3>History</h3>
         <br>
-        <img src="../../assets/history.jpg" alt="History">
+        <img [src]="homeHistoryLinkSrc" [alt]="homeHistoryLinkDescription">
       </div>
 
     </div>
     <!-- End of Meet The Pastor and History row -->
 
   </div>
+  <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
+  <div style="height: 64px;"></div>
 </section>
 
 
@@ -219,23 +223,26 @@
 
 
 
-<!-- Destiny's Child Daycare section -->
-<section id="daycareSection">
+<!-- Destiny's Child Childcare section -->
+<section id="childcareSection">
   <div class="sectionBuffer"></div>
   <div class="container">
+
+    <h2>Destiny's Child Childcare</h2>
+    <div class="headerUnderline"></div>
+
     <div class="row">
       
-      <div class="col-md-4" style="background-color: aquamarine">
-        <img src="http://knoxville.citymomsblog.com/wp-content/uploads/sites/18/2014/03/BOHBC-LOGO.jpg" alt="Destinys Child Daycare Image" style="width: 100%; height: auto;">
+      <div class="col-md-4">
+        <img [src]="homeChildcareImageSrc" [alt]="homeChildcareImageDescription">
+        <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
+        <div style="height: 64px;"></div>
       </div>
 
-      <div class="col-md-8" style="background-color: darkkhaki;">
-        <h2>Destiny's Child Daycare</h2>
-        <div style="width: 75%; height: 1rem; background-color: #f39c12;"></div>
-        <p>Obvious LINK here, maybe include a description, image, something else too?</p>
-        <br>
-        <p>IDEA TIME:</p>
-        <p>Have the image as a paralux fixed background image, and the logo/text on a mostly-white-transparent textbox centered in this section!!!</p>
+      <div class="col-md-8">
+        <p id="homeChildcare">Loading...</p>
+        <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
+        <div style="height: 64px;"></div>
       </div>
 
     </div>
@@ -263,6 +270,11 @@
         <form action="https://formspree.io/jwuestef@gmail.com" method="POST">
           <label for="prayerName">Your name:</label>
           <input class="form-control" id="prayerName" type="text" name="name" placeholder="ex: John Smith">
+          <br>
+          <label for="prayerRequest">Prayer Request:</label>
+          <textarea class="form-control" id="prayerRequest" name="request" cols="30" rows="10" placeholder="Your prayer request here..."></textarea>
+          <br>
+          <button class="btn btn-primary btn-md pull-right">Send</button>
         </form>
       </div>
 

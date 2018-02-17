@@ -181,6 +181,32 @@
 
 
 
+  <h3 class="pageSubCategory">Pastor</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="homePastorImageExisting">Existing Image:</label>
+    <img *ngIf="homePastorImageSrc" id="homePastorImageExisting" style="width: 100px; height: auto" [src]="homePastorImageSrc" [alt]="homePastorImageDescription">
+    <br>
+    <br>
+    <label for="homePastorImageFileInput">Image to upload:<em style="color: red;">*required</em></label>
+    <input type="file" id="homePastorImageFileInput" (change)="homePastorImageDetection($event)">
+    <p><em>*For proper appearance, image should have a 4:5 aspect ratio.</em></p>
+    <br>
+    <label for="homePastorImageDescription">Description of image:<em style="color: red;">*required</em></label>
+    <input type="text" id="homePastorImageDescription" placeholder="description" [(ngModel)]="homePastorImageDescription">
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="homePastorImageUpload()">Upload this image</button>
+    <!-- Progress bar -->
+    <div *ngIf="homePastorImageUploading">
+      <br>
+      <p>Progress: {{currentUpload?.progress}}% Complete</p>
+      <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+    </div>
+  </div>
+
+
+
   <h3 class="pageSubCategory">Image slider</h3>
   <div class="container">
 
@@ -321,6 +347,7 @@
   <!-- End of image slider -->
 
 
+
   <h3 class="pageSubCategory">Welcome</h3>
   <div class="textUpdaterDiv">
     <texteditor [elementId]="'homeWelcome'"></texteditor>
@@ -349,6 +376,118 @@
 
 
 
+  <h3 class="pageSubCategory">About Us</h3>
+  <div class="container">
+
+    <!-- Calendar and Gallery link image update form -->
+    <div class="row">
+
+      <!-- Calendar link image upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeCalendarLinkExisting">Existing Image:</label>
+        <img *ngIf="homeCalendarLinkSrc" id="homeCalendarLinkExisting" style="width: 100px; height: auto" [src]="homeCalendarLinkSrc" [alt]="homeCalendarLinkDescription">
+        <br>
+        <br>
+        <label for="homeCalendarLinkFileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeCalendarLinkFileInput" (change)="homeCalendarLinkDetection($event)">
+        <p><em>*For proper appearance, image should have a 4:3 aspect ratio.</em></p>
+        <br>
+        <label for="homeCalendarLinkDescription">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeCalendarLinkDescription" placeholder="description" [(ngModel)]="homeCalendarLinkDescription">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeCalendarLinkUpload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeCalendarLinkUploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- Gallery link image upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeGalleryLinkExisting">Existing Image:</label>
+        <img *ngIf="homeGalleryLinkSrc" id="homeGalleryLinkExisting" style="width: 100px; height: auto" [src]="homeGalleryLinkSrc" [alt]="homeGalleryLinkDescription">
+        <br>
+        <br>
+        <label for="homeGalleryLinkFileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeGalleryLinkFileInput" (change)="homeGalleryLinkDetection($event)">
+        <p><em>*For proper appearance, image should have a 4:3 aspect ratio.</em></p>
+        <br>
+        <label for="homeGalleryLinkDescription">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeGalleryLinkDescription" placeholder="description" [(ngModel)]="homeGalleryLinkDescription">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeGalleryLinkUpload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeGalleryLinkUploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating Calendar and Gallery link images -->
+
+    <!-- Meet The Pastor and History link image update form -->
+    <div class="row">
+
+      <!-- Meet The Pastor link image upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homePastorLinkExisting">Existing Image:</label>
+        <img *ngIf="homePastorLinkSrc" id="homePastorLinkExisting" style="width: 100px; height: auto" [src]="homePastorLinkSrc" [alt]="homePastorLinkDescription">
+        <br>
+        <br>
+        <label for="homePastorLinkFileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homePastorLinkFileInput" (change)="homePastorLinkDetection($event)">
+        <p><em>*For proper appearance, image should have a 4:3 aspect ratio.</em></p>
+        <br>
+        <label for="homePastorLinkDescription">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homePastorLinkDescription" placeholder="description" [(ngModel)]="homePastorLinkDescription">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homePastorLinkUpload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homePastorLinkUploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+      <!-- History link image upload -->
+      <div class="col-md-6 imageUploadingForm imageUploadingForm">
+        <label for="homeHistoryLinkExisting">Existing Image:</label>
+        <img *ngIf="homeHistoryLinkSrc" id="homeHistoryLinkExisting" style="width: 100px; height: auto" [src]="homeHistoryLinkSrc" [alt]="homeHistoryLinkDescription">
+        <br>
+        <br>
+        <label for="homeHistoryLinkFileInput">Image to upload: <em style="color: red;">*required</em></label>
+        <input type="file" id="homeHistoryLinkFileInput" (change)="homeHistoryLinkDetection($event)">
+        <p><em>*For proper appearance, image should have a 4:3 aspect ratio.</em></p>
+        <br>
+        <label for="homeHistoryLinkDescription">Description of image: <em style="color: red;">*required</em></label>
+        <input type="text" id="homeHistoryLinkDescription" placeholder="description" [(ngModel)]="homeHistoryLinkDescription">
+        <br>
+        <br>
+        <button class="btn btn-md btn-primary" (click)="homeHistoryLinkUpload()">Upload this image</button>
+        <!-- Progress bar -->
+        <div *ngIf="homeHistoryLinkUploading">
+          <br>
+          <p>Progress: {{currentUpload?.progress}}% Complete</p>
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of row for updating Meet The Pastor and History link images -->
+
+  </div>
+  <!-- End of About Us image uploading -->
+
+
+
   <h3 class="pageSubCategory">Video URL</h3>
   <div class="textUpdaterDiv">
     <br>
@@ -365,10 +504,44 @@
   </div>
 
 
-  <h3 class="pageSubCategory">Destiny's Daycare - something here, image, description, etc...</h3>
-  <br>
-  <br>
-  <br>
+
+
+
+  <h3 class="pageSubCategory">Destiny's Child Childcare</h3>
+  <div class="textUpdaterDiv">
+      <br>
+      <label for="homeChildcareImageExisting">Existing Image:</label>
+      <img *ngIf="homeChildcareImageSrc" id="homeChildcareImageExisting" style="width: 100px; height: auto" [src]="homeChildcareImageSrc" [alt]="homeChildcareImageDescription">
+      <br>
+      <br>
+      <label for="homeChildcareImageFileInput">Image to upload:<em style="color: red;">*required</em></label>
+      <input type="file" id="homeChildcareImageFileInput" (change)="homeChildcareImageDetection($event)">
+      <!-- <p><em>*For proper appearance, image should have a 1:2 aspect ratio.</em></p> -->
+      <br>
+      <label for="homeChildcareImageDescription">Description of image:<em style="color: red;">*required</em></label>
+      <input type="text" id="homeChildcareImageDescription" placeholder="description" [(ngModel)]="homeChildcareImageDescription">
+      <br>
+      <br>
+      <button class="btn btn-md btn-primary" (click)="homeChildcareImageUpload()">Upload this image</button>
+      <!-- Progress bar -->
+      <div *ngIf="homeChildcareImageUploading">
+        <br>
+        <p>Progress: {{currentUpload?.progress}}% Complete</p>
+        <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+      </div>
+    </div>
+
+  <div class="textUpdaterDiv">
+    <texteditor [elementId]="'homeChildcare'"></texteditor>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="saveHomeChildcare()">Update</button>
+    <!-- After successful update, show confirmation -->
+    <span class="updated" *ngIf="homeChildcareUpdated">
+      <strong>Updated</strong>
+      <i class="fa fa-check fa-1x" aria-hidden="true"> </i>
+    </span>
+  </div>
+
 
 
 
@@ -845,7 +1018,7 @@
     <br>
     <label for="pastorImageInput">Photo to upload:<em style="color: red;">*required</em></label>
     <input type="file" id="pastorImageInput" (change)="pastorImageDetection($event)">
-    <p><em>*For proper appearance, photo should have a 1:1 aspect ratio.</em></p>
+    <!-- <p><em>*For proper appearance, photo should have a 1:1 aspect ratio.</em></p> -->
     <br>
     <label for="pastorImageDescription">Description of photo:<em style="color: red;">*required</em></label>
     <input type="text" id="pastorImageDescription" placeholder="description" [(ngModel)]="pastorImageDescription">
@@ -891,7 +1064,7 @@
     <br>
     <label for="historyImageInput">Photo to upload:<em style="color: red;">*required</em></label>
     <input type="file" id="historyImageInput" (change)="historyImageDetection($event)">
-    <p><em>*For proper appearance, photo should have a 1:1 aspect ratio.</em></p>
+    <!-- <p><em>*For proper appearance, photo should have a 1:1 aspect ratio.</em></p> -->
     <br>
     <label for="historyImageDescription">Description of photo:<em style="color: red;">*required</em></label>
     <input type="text" id="historyImageDescription" placeholder="description" [(ngModel)]="historyImageDescription">

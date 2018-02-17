@@ -55,9 +55,10 @@ section {
   height: 100vh;
   text-align: center;
   white-space: nowrap;
-  background-color: #191919;
-  background-repeat: no-repeat;
-  background-position: center top;
+  background: url(../../assets/whiteBackgroundFiller.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
@@ -234,7 +235,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  align-items: center;
+  align-items: top;
 }
 #ourBeliefsSection iframe {
   width: 100%;
@@ -293,7 +294,7 @@ section {
 
 // The images for the About section, labeling Calendar, Gallery, Meet The Pastor, and History
 #aboutUsSection .aboutPanel img {
-  width: 66%;
+  width: 50%;
   height: auto;
   margin: auto auto;
 }
@@ -320,8 +321,24 @@ section {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 
+// Gold underline beneath header
+#childcareSection .headerUnderline {
+  width: 50%;
+  height: 1rem;
+  background-color: #f39c12;
+  margin-bottom: 1.5rem;
+}
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #childcareSection .headerUnderline {
+    width: 100%;
+  }
+}
 
-
+#childcareSection img {
+  width: 100%;
+  height: auto;
+}
 
 
 // ---------------------------------------------------------

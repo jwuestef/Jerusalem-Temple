@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   // Image uploading
   homeBackgroundImageSrc = '';
   homeBackgroundImageDescription = '';
+  homePastorImageSrc = '';
+  homePastorImageDescription = '';
   homeSliderImage1Src = '';
   homeSliderImage1Description = '';
   homeSliderImage2Src = '';
@@ -26,6 +28,16 @@ export class HomeComponent implements OnInit {
   homeSliderImage4Description = '';
   homeSliderImage5Src = '';
   homeSliderImage5Description = '';
+  homeCalendarLinkSrc = '';
+  homeCalendarLinkDescription = '';
+  homeGalleryLinkSrc = '';
+  homeGalleryLinkDescription = '';
+  homePastorLinkSrc = '';
+  homePastorLinkDescription = '';
+  homeHistoryLinkSrc = '';
+  homeHistoryLinkDescription = '';
+  homeChildcareImageSrc = '';
+  homeChildcareImageDescription = '';
 
 
 
@@ -57,6 +69,8 @@ export class HomeComponent implements OnInit {
       $('#homeBeliefs').html(pageContent.homeBeliefs);
       pageContent.homeVideo = pageContent.homeVideo ? pageContent.homeVideo : '';
       this.homeVideo = this.sanitizer.bypassSecurityTrustResourceUrl(pageContent.homeVideo);
+      pageContent.homeChildcare = pageContent.homeChildcare ? pageContent.homeChildcare : '';
+      $('#homeChildcare').html(pageContent.homeChildcare);
       // Images
       // Home Background Image
       pageContent.homeBackgroundImage = pageContent.homeBackgroundImage ? pageContent.homeBackgroundImage : {};
@@ -64,6 +78,13 @@ export class HomeComponent implements OnInit {
       pageContent.homeBackgroundImage['description'] = pageContent.homeBackgroundImage['description'] ? pageContent.homeBackgroundImage['description'] : '';
       this.homeBackgroundImageSrc = pageContent.homeBackgroundImage['url'];
       this.homeBackgroundImageDescription = pageContent.homeBackgroundImage['description'];
+      document.getElementById('landingSection').style.backgroundImage = `url('${this.homeBackgroundImageSrc}')`;
+      // Home Pastor Image
+      pageContent.homePastorImage = pageContent.homePastorImage ? pageContent.homePastorImage : {};
+      pageContent.homePastorImage['url'] = pageContent.homePastorImage['url'] ? pageContent.homePastorImage['url'] : '';
+      pageContent.homePastorImage['description'] = pageContent.homePastorImage['description'] ? pageContent.homePastorImage['description'] : '';
+      this.homePastorImageSrc = pageContent.homePastorImage['url'];
+      this.homePastorImageDescription = pageContent.homePastorImage['description'];
       // Home Slider 1
       pageContent.homeSliderImage1 = pageContent.homeSliderImage1 ? pageContent.homeSliderImage1 : {};
       pageContent.homeSliderImage1['url'] = pageContent.homeSliderImage1['url'] ? pageContent.homeSliderImage1['url'] : '';
@@ -94,6 +115,36 @@ export class HomeComponent implements OnInit {
       pageContent.homeSliderImage5['description'] = pageContent.homeSliderImage5['description'] ? pageContent.homeSliderImage5['description'] : '';
       this.homeSliderImage5Src = pageContent.homeSliderImage5['url'];
       this.homeSliderImage5Description = pageContent.homeSliderImage5['description'];
+      // Home Calendar Link
+      pageContent.homeCalendarLink = pageContent.homeCalendarLink ? pageContent.homeCalendarLink : {};
+      pageContent.homeCalendarLink['url'] = pageContent.homeCalendarLink['url'] ? pageContent.homeCalendarLink['url'] : '';
+      pageContent.homeCalendarLink['description'] = pageContent.homeCalendarLink['description'] ? pageContent.homeCalendarLink['description'] : '';
+      this.homeCalendarLinkSrc = pageContent.homeCalendarLink['url'];
+      this.homeCalendarLinkDescription = pageContent.homeCalendarLink['description'];
+      // Home Gallery Link
+      pageContent.homeGalleryLink = pageContent.homeGalleryLink ? pageContent.homeGalleryLink : {};
+      pageContent.homeGalleryLink['url'] = pageContent.homeGalleryLink['url'] ? pageContent.homeGalleryLink['url'] : '';
+      pageContent.homeGalleryLink['description'] = pageContent.homeGalleryLink['description'] ? pageContent.homeGalleryLink['description'] : '';
+      this.homeGalleryLinkSrc = pageContent.homeGalleryLink['url'];
+      this.homeGalleryLinkDescription = pageContent.homeGalleryLink['description'];
+      // Home Pastor Link
+      pageContent.homePastorLink = pageContent.homePastorLink ? pageContent.homePastorLink : {};
+      pageContent.homePastorLink['url'] = pageContent.homePastorLink['url'] ? pageContent.homePastorLink['url'] : '';
+      pageContent.homePastorLink['description'] = pageContent.homePastorLink['description'] ? pageContent.homePastorLink['description'] : '';
+      this.homePastorLinkSrc = pageContent.homePastorLink['url'];
+      this.homePastorLinkDescription = pageContent.homePastorLink['description'];
+      // Home History Link
+      pageContent.homeHistoryLink = pageContent.homeHistoryLink ? pageContent.homeHistoryLink : {};
+      pageContent.homeHistoryLink['url'] = pageContent.homeHistoryLink['url'] ? pageContent.homeHistoryLink['url'] : '';
+      pageContent.homeHistoryLink['description'] = pageContent.homeHistoryLink['description'] ? pageContent.homeHistoryLink['description'] : '';
+      this.homeHistoryLinkSrc = pageContent.homeHistoryLink['url'];
+      this.homeHistoryLinkDescription = pageContent.homeHistoryLink['description'];
+      // Home Childcare Image
+      pageContent.homeChildcareImage = pageContent.homeChildcareImage ? pageContent.homeChildcareImage : {};
+      pageContent.homeChildcareImage['url'] = pageContent.homeChildcareImage['url'] ? pageContent.homeChildcareImage['url'] : '';
+      pageContent.homeChildcareImage['description'] = pageContent.homeChildcareImage['description'] ? pageContent.homeChildcareImage['description'] : '';
+      this.homeChildcareImageSrc = pageContent.homeChildcareImage['url'];
+      this.homeChildcareImageDescription = pageContent.homeChildcareImage['description'];
     });
   }
 
