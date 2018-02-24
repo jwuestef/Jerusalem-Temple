@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ContentService } from '../services/content.service';
 
@@ -38,10 +39,19 @@ export class HomeComponent implements OnInit {
   homeHistoryLinkDescription = '';
   homeChildcareImageSrc = '';
   homeChildcareImageDescription = '';
+  // Prayer request form
+  prayerRequestName = '';
+  prayerRequestMessage = '';
+  // Contact request form
+  contactRequestName = '';
+  contactRequestEmail = '';
+  contactRequestPhone = '';
+  contactRequestMessage = '';
+  avoidSpam = '';
 
 
 
-  constructor(private contentService: ContentService, public sanitizer: DomSanitizer) { }
+  constructor(private contentService: ContentService, public sanitizer: DomSanitizer, private http: HttpClient) { }
 
 
 
@@ -146,6 +156,99 @@ export class HomeComponent implements OnInit {
       this.homeChildcareImageSrc = pageContent.homeChildcareImage['url'];
       this.homeChildcareImageDescription = pageContent.homeChildcareImage['description'];
     });
+  }
+
+
+
+  // Sends the prayer request
+  // Sends a POST request to Formspree with content of contact form.
+  // Formspree is not compatible with Angular by default, so we have to use the http client
+  postPrayer() {
+
+
+  }
+
+
+
+  // Sends the contact message
+  // Sends a POST request to Formspree with content of contact form.
+  // Formspree is not compatible with Angular by default, so we have to use the http client
+  postMessage() {
+
+    
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+
+    // Url that we are sending the POST request to
+    const url = 'https://formsubmit.io/send/JTAIndy@gmail.com';
+
+    // WRONG
+    // const data = {
+    //   name: name,
+    //   email: email,
+    //   message: message
+    // }
+
+    // RIGHT
+    const data = `name=${this.contactRequestName}&email=${this.contactRequestEmail}&phone=${this.contactRequestPhone}&message=${this.contactRequestMessage}&_formsubmit_id=${this.avoidSpam}`;
+
+    // Actually send the post request, and listen for a response.
+    this.http.post(url, data, httpOptions)
+      .subscribe(
+        value => { console.log('Response is: '); console.log(value); },
+        error => { 
+          alert('Error submitting form. Please contact us at JTAIndy@gmail.com.');
+          console.log(error);
+        },
+        () => {
+          alert('Submission successful');
+          this.contactRequestName = '';
+          this.contactRequestEmail = '';
+          this.contactRequestPhone = '';
+          this.contactRequestMessage = '';
+        }
+      );
+
+
+      // Prepare the object we're going to send
+      const body = {
+        accessToken: token,
+        uidToReset: this.editUserKey,
+        newPassword: this.resetPassword
+      };
+      // Send the post request to update that user
+      // Doing it this way, to the path /updateUserPassword instead of the full path, avoids CORS errors.
+      // This path is set up in the firebase.json file to direct to the cloud function.
+      // Meaning - this request WILL NOT WORK ON LOCAL HOST - it will only work when deployed to Firebase.
+      this.http.post('/sendContactMessage', body).subscribe(
+        data => {
+          // If we receive 'false' as a response, it did not update the login credential - we need an admin to look at the logs and see why
+          if (!data) {
+            alert('ERROR - Failed to update password. User needs to login with OLD password. See Firebase cloud function logs for more details.');
+          }
+          // Regardless, time to hide the reset password popup
+          this.resetPassword = '';
+          this.resetPasswordConfirm = '';
+          this.resetPasswordErrors = '';
+        },
+        err => {
+          console.log('error in POST request to update user login credential, inside resetThisPassword(), inside existing-users.component.ts.');
+          console.log(err);
+          this.resetPasswordErrors = err.message;
+        },
+        () => console.log('Completed POST request to update user login credential, inside resetThisPassword(), inside existing-users.component.ts.')
+      )
+
+
+
+
+
+
   }
 
 

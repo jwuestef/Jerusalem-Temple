@@ -267,35 +267,35 @@
       <div class="col-md-5">
         <h2>Prayer Request</h2>
         <div class="headerUnderline"></div>
-        <form action="https://formspree.io/jwuestef@gmail.com" method="POST">
+        <div>
           <label for="prayerName">Your name:</label>
-          <input class="form-control" id="prayerName" type="text" name="name" placeholder="ex: John Smith">
+          <input class="form-control" id="prayerName" type="text" [(ngModel)]="prayerRequestName" placeholder="ex: John Smith">
           <br>
           <label for="prayerRequest">Prayer Request:</label>
-          <textarea class="form-control" id="prayerRequest" name="request" cols="30" rows="10" placeholder="Your prayer request here..."></textarea>
+          <textarea class="form-control" id="prayerRequest" cols="30" rows="10" [(ngModel)]="prayerRequestMessage" placeholder="Your prayer request here..."></textarea>
           <br>
-          <button class="btn btn-primary btn-md pull-right">Send</button>
-        </form>
+          <button (click)="postPrayer()" class="btn btn-primary btn-md pull-right">Send</button>
+        </div>
       </div>
 
       <div class="col-md-5 col-md-offset-1">
         <h2>Contact Us</h2>
         <div class="headerUnderline"></div>
-        <form action="https://formspree.io/jwuestef@gmail.com" method="POST">
+        <div>
           <label for="contactName">Your name:</label>
-          <input class="form-control" id="contactName" type="text" name="name" placeholder="ex: John Smith">
+          <input class="form-control" id="contactName" type="text" [(ngModel)]="contactRequestName" placeholder="ex: John Smith">
           <br>
           <label for="contactEmail">Email:</label>
-          <input class="form-control" id="contactEmail" type="email" name="email" placeholder="example@website.com">
+          <input class="form-control" id="contactEmail" type="email" [(ngModel)]="contactRequestEmail" placeholder="example@website.com">
           <br>
           <label for="contactPhone">Phone number:</label>
-          <input class="form-control" id="contactPhone" type="text" name="phone" placeholder="(317) 253-2276">
+          <input class="form-control" id="contactPhone" type="text" [(ngModel)]="contactRequestPhone" placeholder="(317) 253-2276">
           <br>
           <label for="contactMessage">Message:</label>
-          <textarea class="form-control" id="contactMessage" name="message" cols="30" rows="10" placeholder="Your message here..."></textarea>
+          <textarea class="form-control" id="contactMessage" cols="30" rows="10" [(ngModel)]="contactRequestMessage" placeholder="Your message here..."></textarea>
           <br>
-          <button class="btn btn-primary btn-md pull-right">Send</button>
-        </form>
+          <button (click)="postMessage()" class="btn btn-primary btn-md pull-right">Send</button>
+        </div>
       </div>
 
     </div>

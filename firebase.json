@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/sendContactMessage",
+        "function": "sendContactMessage"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
