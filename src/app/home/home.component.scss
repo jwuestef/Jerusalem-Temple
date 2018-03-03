@@ -54,8 +54,36 @@ section {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  // Center the header
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
+// Header at top of page
+#landingSection h1 {
+  font-family: 'Courgette', cursive;
+  color: #f39c12;
+  text-shadow: 0 0 0.3em black, 0 0 0.3em black, 0 0 0.3em black;
+  font-size: 5rem;
+}
+
+#landingSection .lineBreakForSmallerPhones {
+  display: none;
+}
+
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  // Make the line breaks appear
+  #landingSection .lineBreakForSmallerPhones {
+    display: block;
+  }
+  // Make the font smaller
+  #landingSection h1 {
+    font-size: 4rem;
+  }
+}
 
 
 
