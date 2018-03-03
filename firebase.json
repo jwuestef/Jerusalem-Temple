@@ -12,6 +12,10 @@
         "function": "sendContactMessage"
       },
       {
+        "source": "/sendPrayerRequest",
+        "function": "sendPrayerRequest"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

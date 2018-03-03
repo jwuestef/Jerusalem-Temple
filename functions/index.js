@@ -34,19 +34,47 @@ const mailTransport = nodemailer.createTransport({
 
 
 
-// TO DO: Create a function to email us for the Prayer Request form submission too
-
-
-
-// Sends an email to our Gmail account when someone submits the Contact Us form
-exports.sendMessage = functions.https.onRequest( (req, res) => {
-
+// Sends an email to our Gmail account when someone submits the Prayer Request form
+exports.sendPrayerRequest = functions.https.onRequest( (req, res) => {
   // Initialize the mailOptions variable
   const mailOptions = {
     from: gmailEmail,
     to: gmailEmail,
   };
+  // Building Email message.
+  mailOptions.subject = 'Contact form submitted';
+  mailOptions.text = `
+    New contact form submission:
+      Name: ${req.body.prayerRequestName}
+      Message: ${req.body.prayerRequestMessage}
+  `;
+  // Actually send the email, we need to reply with JSON
+  return mailTransport.sendMail(mailOptions).then( () => {
+    // Successfully sent email
+    let objToReplyWith = {
+      answer: 'Message has been sent!'
+    }
+    res.json(objToReplyWith);
+  }).catch( err => {
+    // Failed to send email
+    console.log('There was an error while sending the email:');
+    console.log(err);
+    let objToReplyWith = {
+      answer: 'Error sending message. Please contact us at JTAIndy@gmail.com'
+    }
+    res.json(objToReplyWith);
+  });
+});
 
+
+
+// Sends an email to our Gmail account when someone submits the Contact Us form
+exports.sendContactMessage = functions.https.onRequest( (req, res) => {
+  // Initialize the mailOptions variable
+  const mailOptions = {
+    from: gmailEmail,
+    to: gmailEmail,
+  };
   // Building Email message.
   mailOptions.subject = 'Contact form submitted';
   mailOptions.text = `
@@ -56,13 +84,20 @@ exports.sendMessage = functions.https.onRequest( (req, res) => {
       Phone: ${req.body.contactRequestPhone}
       Message: ${req.body.contactRequestMessage}
   `;
-
+  // Actually send the email, we need to reply with JSON
   return mailTransport.sendMail(mailOptions).then( () => {
-    res.send('Message has been sent!');
+    // Successfully sent email
+    let objToReplyWith = {
+      answer: 'Message has been sent!'
+    }
+    res.json(objToReplyWith);
   }).catch( err => {
-    console.error('There was an error while sending the email:', err);
-    res.send('Error sending message. Please contact us at JTAIndy@gmail.com');
+    // Failed to send email
+    console.log('There was an error while sending the email:');
+    console.log(err);
+    let objToReplyWith = {
+      answer: 'Error sending message. Please contact us at JTAIndy@gmail.com'
+    }
+    res.json(objToReplyWith);
   });
-
-
 });

@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
   contactRequestEmail = '';
   contactRequestPhone = '';
   contactRequestMessage = '';
-  avoidSpam = '';
 
 
 
@@ -161,94 +160,79 @@ export class HomeComponent implements OnInit {
 
 
   // Sends the prayer request
-  // Sends a POST request to Formspree with content of contact form.
-  // Formspree is not compatible with Angular by default, so we have to use the http client
   postPrayer() {
-
-
+    // Make the cursor show the progress icon, let the user know stuff is happening
+    document.body.style.cursor = 'progress';
+    // Prepare the object we're going to send
+    const body = {
+      prayerRequestName: this.prayerRequestName,
+      prayerRequestMessage: this.prayerRequestMessage
+    };
+    // Send the post request to update that user
+    // Doing it this way, to the path /sendPrayerRequest instead of the full path, avoids CORS errors.
+    // This path is set up in the firebase.json file to direct to the cloud function.
+    // Meaning - this request WILL NOT WORK ON LOCAL HOST - it will only work when deployed to Firebase.
+    this.http.post('/sendPrayerRequest', body).subscribe(
+      data => {
+        // We received a message back from the server. Display this message in a popup and reset the variables.
+        document.body.style.cursor = 'default';
+        alert(data['answer']);
+        this.prayerRequestName = '';
+        this.prayerRequestMessage = '';
+      },
+      err => {
+        document.body.style.cursor = 'default';
+        alert('Error submitting form. Please contact us at JTAIndy@gmail.com.');
+        console.log(err);
+      },
+      () => {
+        document.body.style.cursor = 'default';
+        this.prayerRequestName = '';
+        this.prayerRequestMessage = '';
+      }
+    )
   }
 
 
 
   // Sends the contact message
-  // Sends a POST request to Formspree with content of contact form.
-  // Formspree is not compatible with Angular by default, so we have to use the http client
   postMessage() {
-
-    
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
+    // Make the cursor show the progress icon, let the user know stuff is happening
+    document.body.style.cursor = 'progress';
+    // Prepare the object we're going to send
+    const body = {
+      contactRequestName: this.contactRequestName,
+      contactRequestEmail: this.contactRequestEmail,
+      contactRequestPhone: this.contactRequestPhone,
+      contactRequestMessage: this.contactRequestMessage,
     };
-
-    // Url that we are sending the POST request to
-    const url = 'https://formsubmit.io/send/JTAIndy@gmail.com';
-
-    // WRONG
-    // const data = {
-    //   name: name,
-    //   email: email,
-    //   message: message
-    // }
-
-    // RIGHT
-    const data = `name=${this.contactRequestName}&email=${this.contactRequestEmail}&phone=${this.contactRequestPhone}&message=${this.contactRequestMessage}&_formsubmit_id=${this.avoidSpam}`;
-
-    // Actually send the post request, and listen for a response.
-    this.http.post(url, data, httpOptions)
-      .subscribe(
-        value => { console.log('Response is: '); console.log(value); },
-        error => { 
-          alert('Error submitting form. Please contact us at JTAIndy@gmail.com.');
-          console.log(error);
-        },
-        () => {
-          alert('Submission successful');
-          this.contactRequestName = '';
-          this.contactRequestEmail = '';
-          this.contactRequestPhone = '';
-          this.contactRequestMessage = '';
-        }
-      );
-
-
-      // Prepare the object we're going to send
-      const body = {
-        accessToken: token,
-        uidToReset: this.editUserKey,
-        newPassword: this.resetPassword
-      };
-      // Send the post request to update that user
-      // Doing it this way, to the path /updateUserPassword instead of the full path, avoids CORS errors.
-      // This path is set up in the firebase.json file to direct to the cloud function.
-      // Meaning - this request WILL NOT WORK ON LOCAL HOST - it will only work when deployed to Firebase.
-      this.http.post('/sendContactMessage', body).subscribe(
-        data => {
-          // If we receive 'false' as a response, it did not update the login credential - we need an admin to look at the logs and see why
-          if (!data) {
-            alert('ERROR - Failed to update password. User needs to login with OLD password. See Firebase cloud function logs for more details.');
-          }
-          // Regardless, time to hide the reset password popup
-          this.resetPassword = '';
-          this.resetPasswordConfirm = '';
-          this.resetPasswordErrors = '';
-        },
-        err => {
-          console.log('error in POST request to update user login credential, inside resetThisPassword(), inside existing-users.component.ts.');
-          console.log(err);
-          this.resetPasswordErrors = err.message;
-        },
-        () => console.log('Completed POST request to update user login credential, inside resetThisPassword(), inside existing-users.component.ts.')
-      )
-
-
-
-
-
-
+    // Send the post request to update that user
+    // Doing it this way, to the path /sendContactMessage instead of the full path, avoids CORS errors.
+    // This path is set up in the firebase.json file to direct to the cloud function.
+    // Meaning - this request WILL NOT WORK ON LOCAL HOST - it will only work when deployed to Firebase.
+    this.http.post('/sendContactMessage', body).subscribe(
+      data => {
+        // We received a message back from the server. Display this message in a popup and reset the variables.
+        document.body.style.cursor = 'default';
+        alert(data['answer']);
+        this.contactRequestName = '';
+        this.contactRequestEmail = '';
+        this.contactRequestPhone = '';
+        this.contactRequestMessage = '';
+      },
+      err => {
+        document.body.style.cursor = 'default';
+        alert('Error submitting form. Please contact us at JTAIndy@gmail.com.');
+        console.log(err);
+      },
+      () => {
+        document.body.style.cursor = 'default';
+        this.contactRequestName = '';
+        this.contactRequestEmail = '';
+        this.contactRequestPhone = '';
+        this.contactRequestMessage = '';
+      }
+    )
   }
 
 

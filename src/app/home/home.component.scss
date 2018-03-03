@@ -11,12 +11,6 @@ section {
 .sectionBuffer {
   height: 4rem;
 }
-// Devices smaller than 'md' bootstrap classification
-@media only screen and (max-width : 991px) {
-  .sectionBuffer {
-    height: 2rem;
-  }
-}
 
 // Add fade-in animation to whole page
 /* make keyframes that tell the start state and the end state of our object */
