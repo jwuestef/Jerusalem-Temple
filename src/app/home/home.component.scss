@@ -370,11 +370,38 @@ section {
   }
 }
 
-#childcareSection img {
-  width: 100%;
+/* Image slider */
+#childcareSlider {
+  overflow: hidden;
+  position: relative;
+  float: left;
+  padding: 0;
+  max-width: 75%;
   height: auto;
+  margin: 0 auto;
+  margin-left: 2%;
+  background-color: white;
 }
-
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #childcareSlider {
+    margin-left: 12%;
+  }
+}
+#childcareSlider figure img {
+  width: 16.6666666666666666666666666666666%;
+  position: relative;
+  float: left;
+}
+#childcareSlider figure {
+  position: relative;
+  width: 600%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite;
+}
 
 // ---------------------------------------------------------
 // ---------------------------------------------------------

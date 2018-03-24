@@ -37,8 +37,16 @@ export class HomeComponent implements OnInit {
   homePastorLinkDescription = '';
   homeHistoryLinkSrc = '';
   homeHistoryLinkDescription = '';
-  homeChildcareImageSrc = '';
-  homeChildcareImageDescription = '';
+  homeChildcareSlider1Src = '';
+  homeChildcareSlider1Description = '';
+  homeChildcareSlider2Src = '';
+  homeChildcareSlider2Description = '';
+  homeChildcareSlider3Src = '';
+  homeChildcareSlider3Description = '';
+  homeChildcareSlider4Src = '';
+  homeChildcareSlider4Description = '';
+  homeChildcareSlider5Src = '';
+  homeChildcareSlider5Description = '';
   // Prayer request form
   prayerRequestName = '';
   prayerRequestMessage = '';
@@ -148,12 +156,36 @@ export class HomeComponent implements OnInit {
       pageContent.homeHistoryLink['description'] = pageContent.homeHistoryLink['description'] ? pageContent.homeHistoryLink['description'] : '';
       this.homeHistoryLinkSrc = pageContent.homeHistoryLink['url'];
       this.homeHistoryLinkDescription = pageContent.homeHistoryLink['description'];
-      // Home Childcare Image
-      pageContent.homeChildcareImage = pageContent.homeChildcareImage ? pageContent.homeChildcareImage : {};
-      pageContent.homeChildcareImage['url'] = pageContent.homeChildcareImage['url'] ? pageContent.homeChildcareImage['url'] : '';
-      pageContent.homeChildcareImage['description'] = pageContent.homeChildcareImage['description'] ? pageContent.homeChildcareImage['description'] : '';
-      this.homeChildcareImageSrc = pageContent.homeChildcareImage['url'];
-      this.homeChildcareImageDescription = pageContent.homeChildcareImage['description'];
+      // Home Childcare Slider 1
+      pageContent.homeChildcareSlider1 = pageContent.homeChildcareSlider1 ? pageContent.homeChildcareSlider1 : {};
+      pageContent.homeChildcareSlider1['url'] = pageContent.homeChildcareSlider1['url'] ? pageContent.homeChildcareSlider1['url'] : '';
+      pageContent.homeChildcareSlider1['description'] = pageContent.homeChildcareSlider1['description'] ? pageContent.homeChildcareSlider1['description'] : '';
+      this.homeChildcareSlider1Src = pageContent.homeChildcareSlider1['url'];
+      this.homeChildcareSlider1Description = pageContent.homeChildcareSlider1['description'];
+      // Home Childcare Slider 2
+      pageContent.homeChildcareSlider2 = pageContent.homeChildcareSlider2 ? pageContent.homeChildcareSlider2 : {};
+      pageContent.homeChildcareSlider2['url'] = pageContent.homeChildcareSlider2['url'] ? pageContent.homeChildcareSlider2['url'] : '';
+      pageContent.homeChildcareSlider2['description'] = pageContent.homeChildcareSlider2['description'] ? pageContent.homeChildcareSlider2['description'] : '';
+      this.homeChildcareSlider2Src = pageContent.homeChildcareSlider2['url'];
+      this.homeChildcareSlider2Description = pageContent.homeChildcareSlider2['description'];
+      // Home Childcare Slider 3
+      pageContent.homeChildcareSlider3 = pageContent.homeChildcareSlider3 ? pageContent.homeChildcareSlider3 : {};
+      pageContent.homeChildcareSlider3['url'] = pageContent.homeChildcareSlider3['url'] ? pageContent.homeChildcareSlider3['url'] : '';
+      pageContent.homeChildcareSlider3['description'] = pageContent.homeChildcareSlider3['description'] ? pageContent.homeChildcareSlider3['description'] : '';
+      this.homeChildcareSlider3Src = pageContent.homeChildcareSlider3['url'];
+      this.homeChildcareSlider3Description = pageContent.homeChildcareSlider3['description'];
+      // Home Childcare Slider 4
+      pageContent.homeChildcareSlider4 = pageContent.homeChildcareSlider4 ? pageContent.homeChildcareSlider4 : {};
+      pageContent.homeChildcareSlider4['url'] = pageContent.homeChildcareSlider4['url'] ? pageContent.homeChildcareSlider4['url'] : '';
+      pageContent.homeChildcareSlider4['description'] = pageContent.homeChildcareSlider4['description'] ? pageContent.homeChildcareSlider4['description'] : '';
+      this.homeChildcareSlider4Src = pageContent.homeChildcareSlider4['url'];
+      this.homeChildcareSlider4Description = pageContent.homeChildcareSlider4['description'];
+      // Home Childcare Slider 5
+      pageContent.homeChildcareSlider5 = pageContent.homeChildcareSlider5 ? pageContent.homeChildcareSlider5 : {};
+      pageContent.homeChildcareSlider5['url'] = pageContent.homeChildcareSlider5['url'] ? pageContent.homeChildcareSlider5['url'] : '';
+      pageContent.homeChildcareSlider5['description'] = pageContent.homeChildcareSlider5['description'] ? pageContent.homeChildcareSlider5['description'] : '';
+      this.homeChildcareSlider5Src = pageContent.homeChildcareSlider5['url'];
+      this.homeChildcareSlider5Description = pageContent.homeChildcareSlider5['description'];
     });
   }
 

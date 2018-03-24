@@ -104,10 +104,30 @@ export class AdminComponent implements OnInit {
   homeHistoryLinkSelectedFile: FileList;
   homeHistoryLinkUploading = false;
   
-  homeChildcareImageSrc = '';
-  homeChildcareImageDescription = '';
-  homeChildcareImageSelectedFile: FileList;
-  homeChildcareImageUploading = false;
+  homeChildcareSlider1Src = '';
+  homeChildcareSlider1Description = '';
+  homeChildcareSlider1SelectedFile: FileList;
+  homeChildcareSlider1Uploading = false;
+  
+  homeChildcareSlider2Src = '';
+  homeChildcareSlider2Description = '';
+  homeChildcareSlider2SelectedFile: FileList;
+  homeChildcareSlider2Uploading = false;
+  
+  homeChildcareSlider3Src = '';
+  homeChildcareSlider3Description = '';
+  homeChildcareSlider3SelectedFile: FileList;
+  homeChildcareSlider3Uploading = false;
+  
+  homeChildcareSlider4Src = '';
+  homeChildcareSlider4Description = '';
+  homeChildcareSlider4SelectedFile: FileList;
+  homeChildcareSlider4Uploading = false;
+  
+  homeChildcareSlider5Src = '';
+  homeChildcareSlider5Description = '';
+  homeChildcareSlider5SelectedFile: FileList;
+  homeChildcareSlider5Uploading = false;
 
 
 
@@ -346,14 +366,37 @@ export class AdminComponent implements OnInit {
       pageContent.homeHistoryLink['description'] = pageContent.homeHistoryLink['description'] ? pageContent.homeHistoryLink['description'] : '';
       this.homeHistoryLinkSrc = pageContent.homeHistoryLink['url'];
       this.homeHistoryLinkDescription = pageContent.homeHistoryLink['description'];
-      // Home Childcare
-      pageContent.homeChildcareImage = pageContent.homeChildcareImage ? pageContent.homeChildcareImage : {};
-      pageContent.homeChildcareImage['url'] = pageContent.homeChildcareImage['url'] ? pageContent.homeChildcareImage['url'] : '';
-      pageContent.homeChildcareImage['description'] = pageContent.homeChildcareImage['description'] ? pageContent.homeChildcareImage['description'] : '';
-      this.homeChildcareImageSrc = pageContent.homeChildcareImage['url'];
-      this.homeChildcareImageDescription = pageContent.homeChildcareImage['description'];
+      // Home Childcare Slider 1
+      pageContent.homeChildcareSlider1 = pageContent.homeChildcareSlider1 ? pageContent.homeChildcareSlider1 : {};
+      pageContent.homeChildcareSlider1['url'] = pageContent.homeChildcareSlider1['url'] ? pageContent.homeChildcareSlider1['url'] : '';
+      pageContent.homeChildcareSlider1['description'] = pageContent.homeChildcareSlider1['description'] ? pageContent.homeChildcareSlider1['description'] : '';
+      this.homeChildcareSlider1Src = pageContent.homeChildcareSlider1['url'];
+      this.homeChildcareSlider1Description = pageContent.homeChildcareSlider1['description'];
+      // Home Childcare Slider 2
+      pageContent.homeChildcareSlider2 = pageContent.homeChildcareSlider2 ? pageContent.homeChildcareSlider2 : {};
+      pageContent.homeChildcareSlider2['url'] = pageContent.homeChildcareSlider2['url'] ? pageContent.homeChildcareSlider2['url'] : '';
+      pageContent.homeChildcareSlider2['description'] = pageContent.homeChildcareSlider2['description'] ? pageContent.homeChildcareSlider2['description'] : '';
+      this.homeChildcareSlider2Src = pageContent.homeChildcareSlider2['url'];
+      this.homeChildcareSlider2Description = pageContent.homeChildcareSlider2['description'];
+      // Home Childcare Slider 3
+      pageContent.homeChildcareSlider3 = pageContent.homeChildcareSlider3 ? pageContent.homeChildcareSlider3 : {};
+      pageContent.homeChildcareSlider3['url'] = pageContent.homeChildcareSlider3['url'] ? pageContent.homeChildcareSlider3['url'] : '';
+      pageContent.homeChildcareSlider3['description'] = pageContent.homeChildcareSlider3['description'] ? pageContent.homeChildcareSlider3['description'] : '';
+      this.homeChildcareSlider3Src = pageContent.homeChildcareSlider3['url'];
+      this.homeChildcareSlider3Description = pageContent.homeChildcareSlider3['description'];
+      // Home Childcare Slider 4
+      pageContent.homeChildcareSlider4 = pageContent.homeChildcareSlider4 ? pageContent.homeChildcareSlider4 : {};
+      pageContent.homeChildcareSlider4['url'] = pageContent.homeChildcareSlider4['url'] ? pageContent.homeChildcareSlider4['url'] : '';
+      pageContent.homeChildcareSlider4['description'] = pageContent.homeChildcareSlider4['description'] ? pageContent.homeChildcareSlider4['description'] : '';
+      this.homeChildcareSlider4Src = pageContent.homeChildcareSlider4['url'];
+      this.homeChildcareSlider4Description = pageContent.homeChildcareSlider4['description'];
+      // Home Childcare Slider 5
+      pageContent.homeChildcareSlider5 = pageContent.homeChildcareSlider5 ? pageContent.homeChildcareSlider5 : {};
+      pageContent.homeChildcareSlider5['url'] = pageContent.homeChildcareSlider5['url'] ? pageContent.homeChildcareSlider5['url'] : '';
+      pageContent.homeChildcareSlider5['description'] = pageContent.homeChildcareSlider5['description'] ? pageContent.homeChildcareSlider5['description'] : '';
+      this.homeChildcareSlider5Src = pageContent.homeChildcareSlider5['url'];
+      this.homeChildcareSlider5Description = pageContent.homeChildcareSlider5['description'];
     });
-
 
     // Calendar page
     this.contentService.getPageContent('calendarPage').then( pageContent => {
@@ -688,7 +731,11 @@ export class AdminComponent implements OnInit {
     this.homeGalleryLinkUploading = false;
     this.homePastorLinkUploading = false;
     this.homeHistoryLinkUploading = false;
-    this.homeChildcareImageUploading = false;
+    this.homeChildcareSlider1Uploading = false;
+    this.homeChildcareSlider2Uploading = false;
+    this.homeChildcareSlider3Uploading = false;
+    this.homeChildcareSlider4Uploading = false;
+    this.homeChildcareSlider5Uploading = false;
     // Calendar page
     this.calendarSliderImage1Uploading = false;
     this.calendarSliderImage2Uploading = false;
@@ -754,8 +801,20 @@ export class AdminComponent implements OnInit {
   homeHistoryLinkDetection(event) {
     this.homeHistoryLinkSelectedFile = event.target.files;
   }
-  homeChildcareImageDetection(event) {
-    this.homeChildcareImageSelectedFile = event.target.files;
+  homeChildcareSlider1Detection(event) {
+    this.homeChildcareSlider1SelectedFile = event.target.files;
+  }
+  homeChildcareSlider2Detection(event) {
+    this.homeChildcareSlider2SelectedFile = event.target.files;
+  }
+  homeChildcareSlider3Detection(event) {
+    this.homeChildcareSlider3SelectedFile = event.target.files;
+  }
+  homeChildcareSlider4Detection(event) {
+    this.homeChildcareSlider4SelectedFile = event.target.files;
+  }
+  homeChildcareSlider5Detection(event) {
+    this.homeChildcareSlider5SelectedFile = event.target.files;
   }
   homeBackgroundImageUpload() {
     if (this.homeBackgroundImageDescription.trim() === '' || document.getElementById("homeBackgroundImageInput")['files'].length !== 1) {
@@ -966,22 +1025,98 @@ export class AdminComponent implements OnInit {
       }, 2000);
     });
   }
-  homeChildcareImageUpload() {
-    if (this.homeChildcareImageDescription.trim() === '' || document.getElementById("homeChildcareImageFileInput")['files'].length !== 1) {
+  homeChildcareSlider1Upload() {
+    if (this.homeChildcareSlider1Description.trim() === '' || document.getElementById("homeChildcareSlider1FileInput")['files'].length !== 1) {
       return;
     }
     // Display the upload progress bar for the current image and no others
-    this.uploadingImageVariable('homeChildcareImageUploading');
+    this.uploadingImageVariable('homeChildcareSlider1Uploading');
     // Set file-to-be-uploaded to the file taken from the input fields
-    this.currentUpload = new Image(this.homeChildcareImageSelectedFile.item(0));
-    this.currentUpload.description = this.homeChildcareImageDescription.trim();
+    this.currentUpload = new Image(this.homeChildcareSlider1SelectedFile.item(0));
+    this.currentUpload.description = this.homeChildcareSlider1Description.trim();
     // Upload the file via ContentService function (pageName, whichElement, newImage)
-    this.contentService.pushUpload('homePage', 'homeChildcareImage', this.currentUpload).then( newURL => {
+    this.contentService.pushUpload('homePage', 'homeChildcareSlider1', this.currentUpload).then( newURL => {
       // Updates thumbnail image
-      this.homeChildcareImageSrc = newURL.toString();
+      this.homeChildcareSlider1Src = newURL.toString();
       // A few seconds after completion, hide the confirmation
       window.setTimeout( () => {
-        this.homeChildcareImageUploading = false;
+        this.homeChildcareSlider1Uploading = false;
+      }, 2000);
+    });
+  }
+  homeChildcareSlider2Upload() {
+    if (this.homeChildcareSlider2Description.trim() === '' || document.getElementById("homeChildcareSlider2FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('homeChildcareSlider2Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.homeChildcareSlider2SelectedFile.item(0));
+    this.currentUpload.description = this.homeChildcareSlider2Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('homePage', 'homeChildcareSlider2', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.homeChildcareSlider2Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.homeChildcareSlider2Uploading = false;
+      }, 2000);
+    });
+  }
+  homeChildcareSlider3Upload() {
+    if (this.homeChildcareSlider3Description.trim() === '' || document.getElementById("homeChildcareSlider3FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('homeChildcareSlider3Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.homeChildcareSlider3SelectedFile.item(0));
+    this.currentUpload.description = this.homeChildcareSlider3Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('homePage', 'homeChildcareSlider3', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.homeChildcareSlider3Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.homeChildcareSlider3Uploading = false;
+      }, 2000);
+    });
+  }
+  homeChildcareSlider4Upload() {
+    if (this.homeChildcareSlider4Description.trim() === '' || document.getElementById("homeChildcareSlider4FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('homeChildcareSlider4Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.homeChildcareSlider4SelectedFile.item(0));
+    this.currentUpload.description = this.homeChildcareSlider4Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('homePage', 'homeChildcareSlider4', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.homeChildcareSlider4Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.homeChildcareSlider4Uploading = false;
+      }, 2000);
+    });
+  }
+  homeChildcareSlider5Upload() {
+    if (this.homeChildcareSlider5Description.trim() === '' || document.getElementById("homeChildcareSlider5FileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('homeChildcareSlider5Uploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.homeChildcareSlider5SelectedFile.item(0));
+    this.currentUpload.description = this.homeChildcareSlider5Description.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('homePage', 'homeChildcareSlider5', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.homeChildcareSlider5Src = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.homeChildcareSlider5Uploading = false;
       }, 2000);
     });
   }

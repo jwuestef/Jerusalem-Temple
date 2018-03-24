@@ -244,14 +244,28 @@
     <div class="headerUnderline"></div>
 
     <div class="row">
+
+      <div class="col-md-1"></div>
       
-      <div class="col-md-4">
-        <img [src]="homeChildcareImageSrc" [alt]="homeChildcareImageDescription">
+      <div class="col-md-5">
+        <!-- Image slider -->
+        <div class="row">
+          <div class="col-md-12" id="childcareSlider">
+            <figure>
+              <img *ngIf="homeChildcareSlider1Src" [src]="homeChildcareSlider1Src" [alt]="homeChildcareSlider1Description">
+              <img *ngIf="homeChildcareSlider2Src" [src]="homeChildcareSlider2Src" [alt]="homeChildcareSlider2Description">
+              <img *ngIf="homeChildcareSlider3Src" [src]="homeChildcareSlider3Src" [alt]="homeChildcareSlider3Description">
+              <img *ngIf="homeChildcareSlider4Src" [src]="homeChildcareSlider4Src" [alt]="homeChildcareSlider4Description">
+              <img *ngIf="homeChildcareSlider5Src" [src]="homeChildcareSlider5Src" [alt]="homeChildcareSlider5Description">
+              <img *ngIf="homeChildcareSlider1Src" [src]="homeChildcareSlider1Src" [alt]="homeChildcareSlider1Description">
+            </figure>
+          </div>
+        </div>
         <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
         <div style="height: 64px;"></div>
       </div>
 
-      <div class="col-md-8">
+      <div class="col-md-6">
         <p id="homeChildcare">Loading...</p>
         <!-- Spacer after content, to make sure it doesn't butt up right against the next element -->
         <div style="height: 64px;"></div>
