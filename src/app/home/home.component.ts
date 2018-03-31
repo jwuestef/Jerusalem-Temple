@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   homeBackgroundImageDescription = '';
   homePastorImageSrc = '';
   homePastorImageDescription = '';
+  homeLadyImageSrc = '';
+  homeLadyImageDescription = '';
   homeSliderImage1Src = '';
   homeSliderImage1Description = '';
   homeSliderImage2Src = '';
@@ -102,6 +104,12 @@ export class HomeComponent implements OnInit {
       pageContent.homePastorImage['description'] = pageContent.homePastorImage['description'] ? pageContent.homePastorImage['description'] : '';
       this.homePastorImageSrc = pageContent.homePastorImage['url'];
       this.homePastorImageDescription = pageContent.homePastorImage['description'];
+      // Home Lady Image
+      pageContent.homeLadyImage = pageContent.homeLadyImage ? pageContent.homeLadyImage : {};
+      pageContent.homeLadyImage['url'] = pageContent.homeLadyImage['url'] ? pageContent.homeLadyImage['url'] : '';
+      pageContent.homeLadyImage['description'] = pageContent.homeLadyImage['description'] ? pageContent.homeLadyImage['description'] : '';
+      this.homeLadyImageSrc = pageContent.homeLadyImage['url'];
+      this.homeLadyImageDescription = pageContent.homeLadyImage['description'];
       // Home Slider 1
       pageContent.homeSliderImage1 = pageContent.homeSliderImage1 ? pageContent.homeSliderImage1 : {};
       pageContent.homeSliderImage1['url'] = pageContent.homeSliderImage1['url'] ? pageContent.homeSliderImage1['url'] : '';

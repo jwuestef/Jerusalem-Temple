@@ -122,7 +122,6 @@ section {
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 
-
 // Make the pastor's image centered in it's div
 #welcomeSection .pastorImageWrapper {
   text-align: center;
@@ -130,6 +129,12 @@ section {
 
 // Image of pastor 
 #welcomeSection .pastorImage {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+// Image of lady 
+#welcomeSection .ladyImage {
   width: 100%;
   height: auto;
   display: inline-block;
@@ -153,6 +158,10 @@ section {
     margin-top: 2rem;
     width: 50%;
   }
+  #welcomeSection .ladyImage {
+    margin-top: 2rem;
+    width: 50%;
+  }
   #welcomeSection .logoAndName img {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -169,16 +178,18 @@ section {
   position: relative;
   float: left;
   padding: 0;
-  max-width: 75%;
+  max-width: 96%;
   height: auto;
   margin: 0 auto;
   margin-left: 2%;
+  margin-bottom: 2rem;
   background-color: rgba(189,189,189, 0.5);
 }
 // Devices smaller than 'md' bootstrap classification
 @media only screen and (max-width : 991px) {
   #homeSlider {
     margin-left: 12%;
+    max-width: 75%;
   }
 }
 #homeSlider figure img {
@@ -229,8 +240,16 @@ section {
 }
 
 #welcomeSection #onlineGiving a {
+  margin-top: 6rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+// Devices smaller than 'md' bootstrap classification
+@media only screen and (max-width : 991px) {
+  #welcomeSection #onlineGiving a {
+    margin-top: 2rem;
+  }
 }
 
 #welcomeSection #onlineGiving {
@@ -337,12 +356,13 @@ section {
 // Keep everything centered
 @media only screen and (min-width : 768px) {
   #aboutUsSection .is-table-row {
-      display: table;
+    display: table;
+    margin-left: 8.3%;
   }
   #aboutUsSection .is-table-row [class*="col-"] {
-      float: none;
-      display: table-cell;
-      vertical-align: top;
+    float: none;
+    display: table-cell;
+    vertical-align: top;
   }
 }
 

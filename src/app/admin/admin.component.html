@@ -207,6 +207,32 @@
 
 
 
+  <h3 class="pageSubCategory">Lady</h3>
+  <div class="textUpdaterDiv">
+    <br>
+    <label for="homeLadyImageExisting">Existing Image:</label>
+    <img *ngIf="homeLadyImageSrc" id="homeLadyImageExisting" style="width: 100px; height: auto" [src]="homeLadyImageSrc" [alt]="homeLadyImageDescription">
+    <br>
+    <br>
+    <label for="homeLadyImageFileInput">Image to upload:<em style="color: red;">*required</em></label>
+    <input type="file" id="homeLadyImageFileInput" (change)="homeLadyImageDetection($event)">
+    <p><em>*For proper appearance, image should have a 4:5 aspect ratio.</em></p>
+    <br>
+    <label for="homeLadyImageDescription">Description of image:<em style="color: red;">*required</em></label>
+    <input type="text" id="homeLadyImageDescription" placeholder="description" [(ngModel)]="homeLadyImageDescription">
+    <br>
+    <br>
+    <button class="btn btn-md btn-primary" (click)="homeLadyImageUpload()">Upload this image</button>
+    <!-- Progress bar -->
+    <div *ngIf="homeLadyImageUploading">
+      <br>
+      <p>Progress: {{currentUpload?.progress}}% Complete</p>
+      <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+    </div>
+  </div>
+
+
+
   <h3 class="pageSubCategory">Image slider</h3>
   <div class="container">
 

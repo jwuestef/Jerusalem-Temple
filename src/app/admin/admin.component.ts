@@ -59,6 +59,11 @@ export class AdminComponent implements OnInit {
   homePastorImageSelectedFile: FileList;
   homePastorImageUploading = false;
   
+  homeLadyImageSrc = '';
+  homeLadyImageDescription = '';
+  homeLadyImageSelectedFile: FileList;
+  homeLadyImageUploading = false;
+  
   homeSliderImage1Src = '';
   homeSliderImage1Description = '';
   homeSliderImage1SelectedFile: FileList;
@@ -312,6 +317,12 @@ export class AdminComponent implements OnInit {
       pageContent.homePastorImage['description'] = pageContent.homePastorImage['description'] ? pageContent.homePastorImage['description'] : '';
       this.homePastorImageSrc = pageContent.homePastorImage['url'];
       this.homePastorImageDescription = pageContent.homePastorImage['description'];
+      // Home Lady Image
+      pageContent.homeLadyImage = pageContent.homeLadyImage ? pageContent.homeLadyImage : {};
+      pageContent.homeLadyImage['url'] = pageContent.homeLadyImage['url'] ? pageContent.homeLadyImage['url'] : '';
+      pageContent.homeLadyImage['description'] = pageContent.homeLadyImage['description'] ? pageContent.homeLadyImage['description'] : '';
+      this.homeLadyImageSrc = pageContent.homeLadyImage['url'];
+      this.homeLadyImageDescription = pageContent.homeLadyImage['description'];
       // Home Slider 1
       pageContent.homeSliderImage1 = pageContent.homeSliderImage1 ? pageContent.homeSliderImage1 : {};
       pageContent.homeSliderImage1['url'] = pageContent.homeSliderImage1['url'] ? pageContent.homeSliderImage1['url'] : '';
@@ -722,6 +733,7 @@ export class AdminComponent implements OnInit {
     // Home page
     this.homeBackgroundImageUploading = false;
     this.homePastorImageUploading = false;
+    this.homeLadyImageUploading = false;
     this.homeSliderImage1Uploading = false;
     this.homeSliderImage2Uploading = false;
     this.homeSliderImage3Uploading = false;
@@ -773,6 +785,9 @@ export class AdminComponent implements OnInit {
   }
   homePastorImageDetection(event) {
     this.homePastorImageSelectedFile = event.target.files;
+  }
+  homeLadyImageDetection(event) {
+    this.homeLadyImageSelectedFile = event.target.files;
   }
   homeSliderImage1Detection(event) {
     this.homeSliderImage1SelectedFile = event.target.files;
@@ -851,6 +866,25 @@ export class AdminComponent implements OnInit {
       // A few seconds after completion, hide the confirmation
       window.setTimeout( () => {
         this.homePastorImageUploading = false;
+      }, 2000);
+    });
+  }
+  homeLadyImageUpload() {
+    if (this.homeLadyImageDescription.trim() === '' || document.getElementById("homeLadyImageFileInput")['files'].length !== 1) {
+      return;
+    }
+    // Display the upload progress bar for the current image and no others
+    this.uploadingImageVariable('homeLadyImageUploading');
+    // Set file-to-be-uploaded to the file taken from the input fields
+    this.currentUpload = new Image(this.homeLadyImageSelectedFile.item(0));
+    this.currentUpload.description = this.homeLadyImageDescription.trim();
+    // Upload the file via ContentService function (pageName, whichElement, newImage)
+    this.contentService.pushUpload('homePage', 'homeLadyImage', this.currentUpload).then( newURL => {
+      // Updates thumbnail image
+      this.homeLadyImageSrc = newURL.toString();
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.homeLadyImageUploading = false;
       }, 2000);
     });
   }

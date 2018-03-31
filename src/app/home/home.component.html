@@ -66,30 +66,34 @@
   <div class="sectionBuffer"></div>
   <div style="height: 4rem;"></div>
   <div class="container">
+
+
+
+    <!-- Row containing pastor, image slider, and lady -->
     <div class="row">
 
-
-      <!-- Left side of section, image of pastor and wife -->
+      <!-- Left side of section, image of pastor -->
       <div class="col-md-3 pastorImageWrapper">
-
         <img *ngIf="homePastorImageSrc" [src]="homePastorImageSrc" [alt]="homePastorImageDescription" class="pastorImage">
-
+        <h5 *ngIf="homePastorImageDescription" [innerText]="homePastorImageDescription"></h5>
       </div>
 
-
-
-      <!-- Right side of section, church logo, name, image slider, welcome paragraph, and online giving link -->
-      <div class="col-md-9">
-
+      <!-- Right side of section, image of lady -->
+      <div class="col-md-3 col-md-push-6 pastorImageWrapper">
+        <img *ngIf="homeLadyImageSrc" [src]="homeLadyImageSrc" [alt]="homeLadyImageDescription" class="ladyImage">
+        <h5 *ngIf="homeLadyImageDescription" [innerText]="homeLadyImageDescription"></h5>
+      </div>
+      
+      <!-- Middle section containing header and image slider -->
+      <div class="col-md-6 col-md-pull-3">
         <!-- Church logo and name -->
         <div class="row logoAndName">
-          <img src="https://media2.s-nbcnews.com/j/MSNBC/Components/Video/201706/church-stock-today-170603.today-inline-vid-featured-desktop.jpg" style="width: 100px;" alt="Church logo" class="col-sm-4">
-          <h2 class="col-sm-8">Jerusalem Temple Apostolic</h2>
+          <img src="../../assets/cross-free-icon.png" style="width: 100px;" alt="Church logo" class="col-sm-3">
+          <h2 class="col-sm-9">Jerusalem Temple Apostolic</h2>
         </div>
-
         <!-- Image slider -->
         <div class="row">
-          <div class="col-md-12" id="homeSlider">
+          <div class="col-md-12" id="homeSlider" style="background-color: red">
             <figure>
               <img *ngIf="homeSliderImage1Src" [src]="homeSliderImage1Src" [alt]="homeSliderImage1Description">
               <img *ngIf="homeSliderImage2Src" [src]="homeSliderImage2Src" [alt]="homeSliderImage2Description">
@@ -100,28 +104,41 @@
             </figure>
           </div>
         </div>
+      </div>
+      
 
-        <!-- 2 columns, welcome paragraph and an online giving link -->
+
+    </div>
+    <!-- End of main welcome-section row -->
+
+
+
+    <!-- 2 columns, welcome paragraph and an online giving link -->
+    <div class="row">
+      <!-- Spacer -->
+      <div class="col-md-2"></div>
+      <!-- Actual content -->
+      <div class="col-md-10">
         <div class="row">
+      
           <div class="col-md-6">
             <h2>Welcome</h2>
             <div class="headerUnderline"></div>
             <p id="homeWelcome">Loading...</p>
           </div>
+      
           <!-- Online giving link -->
           <div class="col-md-6" id="onlineGiving">
             <a target='_blank' href='https://www.givelify.com/givenow/1.0/?token=eyJvcmdfaWQiOiJNalk1TnpFfiIsImJhZGdlX2ltYWdlIjoiYjUucG5nIn0~'>
               <img src='https://www.givelify.com/givenow/widget/badge/b5.png' alt='Givelify' />
             </a>
           </div>
+    
         </div>
-
       </div>
-
-      
-
     </div>
-    <!-- End of main welcome-section row -->
+
+
 
   </div>
   <!-- End of div.container -->
@@ -185,7 +202,7 @@
       <h2>About Us</h2>
       <div class="headerUnderline"></div>
     </div>
-
+    
     <!-- Calendar and Gallery row -->
     <div class="is-table-row">
 
