@@ -39,7 +39,7 @@ export class CalendarComponent implements OnInit {
     this.galleryOptions = [
       {
           width: '500px',
-          height: '750px',
+          height: '667px',
           imageAnimation: NgxGalleryAnimation.Slide,
           imageAutoPlay: true,
           imageAutoPlayInterval: 5000,
@@ -60,14 +60,14 @@ export class CalendarComponent implements OnInit {
       // max-width 991
       {
           breakpoint: 991,
-          width: '400px',
+          width: '450px',
           height: '600px'
       },
       // max-width 400
       {
           breakpoint: 400,
-          width: '300px',
-          height: '450px',
+          width: '330px',
+          height: '440px',
           preview: false
       }
     ];
