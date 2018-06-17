@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 import { ContentService } from '../services/content.service';
 import { Image } from '../services/image.model';
@@ -35,8 +33,10 @@ export class AdminComponent implements OnInit {
   ]);
   loginErrors = [];
   
+  // Current upload
   currentUpload: Image;
   
+
 
   // Home page
   // Text editors
@@ -136,7 +136,6 @@ export class AdminComponent implements OnInit {
 
 
 
-
   // Calendar page
   // Text editors
   calendarScheduleUpdated = false;
@@ -165,6 +164,7 @@ export class AdminComponent implements OnInit {
   calendarSliderImage5Description = '';
   calendarSliderImage5SelectedFile: FileList;
   calendarSliderImage5Uploading = false;
+
 
 
   // Gallery page
@@ -222,6 +222,7 @@ export class AdminComponent implements OnInit {
   gallerySliderImage10Uploading = false;
 
 
+
   // Meet The Pastor page
   // Text editors
   pastorBiographyUpdated = false;
@@ -232,14 +233,17 @@ export class AdminComponent implements OnInit {
   pastorImageUploading = false;
 
 
+
   // Church History page
   // Text editors
   churchHistoryUpdated = false;
+  historyImageCaptionUpdated = false;
   // Image uploading
   historyImageSrc = '';
   historyImageDescription = '';
   historyImageSelectedFile: FileList;
   historyImageUploading = false;
+
 
 
   // Footer
@@ -255,8 +259,6 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private afd: AngularFireDatabase,
-    private router: Router,
     private contentService: ContentService,
     public scrollingService: ScrollingService
   ) {
@@ -537,6 +539,8 @@ export class AdminComponent implements OnInit {
       // Text editors
       pageContent.churchHistory = pageContent.churchHistory ? pageContent.churchHistory : '';
       tinymce.get('churchHistory').setContent(pageContent.churchHistory);
+      pageContent.historyImageCaption = pageContent.historyImageCaption ? pageContent.historyImageCaption : '';
+      tinymce.get('historyImageCaption').setContent(pageContent.historyImageCaption);
       // Images
       // Historical Image
       pageContent.historyImage = pageContent.historyImage ? pageContent.historyImage : {};
@@ -679,6 +683,16 @@ export class AdminComponent implements OnInit {
       // A few seconds after completion, hide the confirmation
       window.setTimeout( () => {
         this.churchHistoryUpdated = false;
+      }, 2000);
+    });
+  }
+  saveHistoryImageCaption() {
+    this.historyImageCaptionUpdated = false;
+    this.contentService.savePageContent('historyPage', 'historyImageCaption', tinymce.get('historyImageCaption').getContent()).then( () => {
+      this.historyImageCaptionUpdated = true;
+      // A few seconds after completion, hide the confirmation
+      window.setTimeout( () => {
+        this.historyImageCaptionUpdated = false;
       }, 2000);
     });
   }

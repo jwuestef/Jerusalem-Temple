@@ -37,6 +37,8 @@ export class HistoryComponent implements OnInit {
       // Text
       pageContent.churchHistory = pageContent.churchHistory ? pageContent.churchHistory : '';
       $('#churchHistory').html(pageContent.churchHistory);
+      pageContent.historyImageCaption = pageContent.historyImageCaption ? pageContent.historyImageCaption : '';
+      $('#historyImageCaption').html(pageContent.historyImageCaption);
       // Images
       pageContent.historyImage = pageContent.historyImage ? pageContent.historyImage : {};
       pageContent.historyImage['url'] = pageContent.historyImage['url'] ? pageContent.historyImage['url'] : '';
